@@ -14,27 +14,13 @@ import {
 import HabitButton from './app/components/Button.js'
 import Picture from './app/components/Picture'
 import HabitTextInput from './app/components/HabitTextInput'
+import NewHabitContainer from './app/components/NewHabit'
 import ListContainer from './app/containers/ListContainer'
 
 export default class HabitualFrontEndRN extends Component {
   render() {
     return (
-      <View style={styles.container}>
-      <Picture />
-      <Text style={styles.instructions}>
-        Enter the name of the habit that you want to build
-      </Text>
-      <HabitTextInput />
-      <Text style={styles.instructions}>
-        What time of the day do you want to be reminded?
-      </Text>
-      <HabitTextInput />
-      <Text style={styles.instructions}>
-        How often do you want to be reminded?
-      </Text>
-      <HabitTextInput />
-      <HabitButton />
-      </View>
+      <NewHabitContainer/>
     );
   }
 }

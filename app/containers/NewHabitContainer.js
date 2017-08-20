@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { AppRegistry, View, TextInput } from 'react-native';
+import { AppRegistry, View, TextInput, TouchableOpacity, Text, StyleSheet } from 'react-native';
 
 export default class NewHabitContainer extends Component {
   // make this a container - container is sorta like view, component is sort of like partial
@@ -9,36 +9,66 @@ export default class NewHabitContainer extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { text: 'placeholder', text2: 'other place', user-id: '' };
+    this.state = { reminderName: '', reminderMessage: '' };
   }
 
 
   render() {
     return (
-      <View style={{}}>
+      <View style={{
+        justifyContent: 'center',
+        alignItems: 'center',
+        flex: 1,
+        // flexDirection: 'row'
+      }}>
+        <Text style={styles.label}>New Reminder</Text>
         <TextInput
-          style={{
-            height: 40,
-            fontWeight: '600',
-            textAlign: 'center',
-            borderColor: 'gray',
-            borderWidth: 1
-          }}
-          onChangeText={(text2) => this.setState({text2})}
-          value={this.state.text2}
+          style={styles.inputBox}
+          placeholder="Name"
+          onChangeText={(reminderName) => this.setState({reminderName})}
+          value={this.state.reminderName}
         />
         <TextInput
-          style={{
-            height: 40,
-            fontWeight: '600',
-            textAlign: 'center',
-            borderColor: 'gray',
-            borderWidth: 1
-          }}
-          onChangeText={(text) => this.setState({text})}
-          value={this.state.text}
+          style={styles.inputBox}
+          placeholder="Message"
+          onChangeText={(reminderMessage) => this.setState({reminderMessage})}
+          value={this.state.reminderMessage}
         />
+        <TouchableOpacity onPress={this._onPressButton}>
+          <View style={styles.button}>
+            <Text style={styles.buttonText}>Submit</Text>
+          </View>
+        </TouchableOpacity>
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  inputBox: {
+    marginTop: 20,
+    flex: .05,
+    width: 240,
+    fontWeight: '600',
+    textAlign: 'center',
+    borderColor: 'dimgray',
+    borderWidth: 1,
+    padding: 10
+  },
+  label: {
+    marginTop: 20,
+    fontSize: 24,
+    fontWeight: '600'
+  },
+  button: {
+    marginTop: 20,
+    width: 240,
+    alignItems: 'center',
+    backgroundColor: 'darkseagreen'
+  },
+  buttonText: {
+    padding: 10,
+    fontWeight: '600',
+    color: 'white'
+  }
+})

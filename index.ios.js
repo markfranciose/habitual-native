@@ -1,16 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
-import React, { Component } from 'react';
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
 import HabitButton from './app/components/Button.js'
 import Picture from './app/components/Picture'
 import HabitTextInput from './app/components/HabitTextInput'
@@ -26,18 +13,25 @@ export default class HabitualFrontEndRN extends Component {
   }
 
   render() {
+    const { navigate } = this.props.navigation;
     return (
       <Text>{this.state.user_id}</Text>
     );
   }
 }
 
+const SimpleApp = StackNavigator({
+  Home: {screen: HabitualFrontEndRN },//these you declare, name, view
+  Page: {screen: SimpleView},
+  Cool: {screen: Cool}
+});
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'black',
+    backgroundColor: 'white',
   },
   welcome: {
     fontSize: 20,
@@ -51,7 +45,6 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('HabitualFrontEndRN', () => HabitualFrontEndRN);
-
+AppRegistry.registerComponent('HabitualFrontEndRN', () => SimpleApp);
 
 

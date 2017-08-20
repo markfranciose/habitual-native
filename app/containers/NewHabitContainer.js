@@ -14,11 +14,11 @@ export default class NewHabitContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      habitName: '',
-      habitMessage: '',
+      habitName: null,
       startTime: null,
       isTimePickerVisible: false,
-      isTimeChosen: false
+      isTimeChosen: false,
+      validInput: false
     };
   }
 
@@ -29,7 +29,6 @@ export default class NewHabitContainer extends Component {
   _submitForm = () => {
     // console.log('Yo@@@@@@@@@@@@@@');
     let habitName = this.state.habitName;
-    let habitMessage = this.state.habitMessage;
     let habitTime = this.state.startTime;
     return fetch('https://habitualdb.herokuapp.com/users/12345/habits', {
       method: 'POST',
@@ -40,7 +39,6 @@ export default class NewHabitContainer extends Component {
       body: JSON.stringify({
         habit: {
           name: habitName,
-          message: habitMessage,
           reminder_frequency: 1,
           reminder_time: habitTime
         }
@@ -55,8 +53,16 @@ export default class NewHabitContainer extends Component {
     // });
   }
 
+  _checkValidInput = () => {
+    if (this.state.isTimeChosen && this.state.habitName) {
+
+    }
+  };
+
   _toggleTimePicker = () => this.setState({isTimePickerVisible: !this.state.isTimePickerVisible});
+
   _handleTimePicked = (time) => {
+    this._checkValidInput;
     // console.log('A time has been picked: ', time);
     this.setState({
       isTimePickerVisible: !this.state.isTimePickerVisible,
@@ -75,12 +81,6 @@ export default class NewHabitContainer extends Component {
           onChangeText={(habitName) => this.setState({habitName})}
           value={this.state.habitName}
         />
-        <TextInput
-          style={styles.inputBox}
-          placeholder="Message"
-          onChangeText={(habitMessage) => this.setState({habitMessage})}
-          value={this.state.habitMessage}
-        />
         <TouchableOpacity onPress={this._toggleTimePicker}>
           <View style={styles.button}>
             <Text style={styles.buttonText}>{this.state.isTimeChosen ? moment(this.state.startTime).format('h:mm a') : "Start Time"}</Text>
@@ -93,7 +93,9 @@ export default class NewHabitContainer extends Component {
           onConfirm={this._handleTimePicked}
           onCancel={this._toggleTimePicker}
         />
-        <TouchableOpacity onPress={this._submitForm}>
+        <TouchableOpacity
+          isVisible={this.state.validInput}
+          onPress={this._submitForm}>
           <View style={styles.button}>
             <Text style={styles.buttonText}>Submit</Text>
           </View>

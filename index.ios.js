@@ -65,6 +65,3 @@ const styles = StyleSheet.create({
 
 AppRegistry.registerComponent('HabitualFrontEndRN', () => SimpleApp);
 
-
-      // <View style={styles.container}>
-

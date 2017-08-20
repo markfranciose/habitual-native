@@ -15,26 +15,19 @@ import HabitButton from './app/components/Button.js'
 import Picture from './app/components/Picture'
 import HabitTextInput from './app/components/HabitTextInput'
 import ListContainer from './app/containers/ListContainer'
+import DeviceInfo from 'react-native-device-info'
 
 export default class HabitualFrontEndRN extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+        user_id: DeviceInfo.getUniqueID()
+     };
+  }
+
   render() {
     return (
-      <View style={styles.container}>
-      <Picture />
-      <Text style={styles.instructions}>
-        Enter the name of the habit that you want to build
-      </Text>
-      <HabitTextInput />
-      <Text style={styles.instructions}>
-        What time of the day do you want to be reminded?
-      </Text>
-      <HabitTextInput />
-      <Text style={styles.instructions}>
-        How often do you want to be reminded?
-      </Text>
-      <HabitTextInput />
-      <HabitButton />
-      </View>
+      <Text>{this.state.user_id}</Text>
     );
   }
 }

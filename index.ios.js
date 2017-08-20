@@ -4,7 +4,11 @@ import {
   Text,
   View
 } from 'react-native';
-
+import HabitButton from './app/components/Button.js'
+import Picture from './app/components/Picture'
+import HabitTextInput from './app/components/HabitTextInput'
+import NewHabitContainer from './app/containers/NewHabitContainer'
+// import ListContainer from './app/containers/ListContainer'
 import { StackNavigator } from 'react-navigation'
 // import HabitView from './app/containers/HabitView'//these views not pushed...
 // import SimpleView from './app/containers/SimpleView'//were for tests

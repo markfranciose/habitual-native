@@ -38,6 +38,7 @@ yarn-error.log
 *.log
 .nvm
 /danger/node_modules/
+package-lock.json
 
 # BUCK
 buck-out/

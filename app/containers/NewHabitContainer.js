@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { AppRegistry, View, TextInput, TouchableOpacity, Text, StyleSheet } from 'react-native';
-import DateTimePicker from 'react-native-modal-datetime-picker';
+import TimePicker from 'react-native-modal-datetime-picker';
 
 export default class NewHabitContainer extends Component {
   // make this a container - container is sorta like view, component is sort of like partial
@@ -46,10 +46,14 @@ export default class NewHabitContainer extends Component {
           value={this.state.reminderMessage}
         />
         <TouchableOpacity onPress={this._showTimePicker}>
-          <Text>Show TimePicker</Text>
+          <View style={styles.button}>
+            <Text style={styles.buttonText}>Start Time</Text>
+          </View>
         </TouchableOpacity>
-        <DateTimePicker
+        <TimePicker
           isVisible={this.state.isTimePickerVisible}
+          mode='time'
+          titleIOS='Choose a Time'
           onConfirm={this._handleTimePicked}
           onCancel={this._hideTimePicker}
         />
@@ -70,9 +74,10 @@ const styles = StyleSheet.create({
     width: 240,
     fontWeight: '600',
     textAlign: 'center',
-    borderColor: 'dimgray',
-    borderWidth: 1,
-    padding: 10
+    borderColor: 'lightgray',
+    borderWidth: 2,
+    padding: 10,
+    borderRadius: 10
   },
   label: {
     marginTop: 20,
@@ -83,7 +88,8 @@ const styles = StyleSheet.create({
     marginTop: 20,
     width: 240,
     alignItems: 'center',
-    backgroundColor: 'darkseagreen'
+    backgroundColor: 'darkseagreen',
+    borderRadius: 10
   },
   buttonText: {
     padding: 10,

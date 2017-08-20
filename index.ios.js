@@ -1,50 +1,54 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
 import {
-  AppRegistry,
-  StyleSheet,
+  AppRegistry, Button, StyleSheet,
   Text,
   View
 } from 'react-native';
-import HabitButton from './app/components/Button.js'
-import Picture from './app/components/Picture'
-import HabitTextInput from './app/components/HabitTextInput'
-import ListContainer from './app/containers/ListContainer'
 
-export default class HabitualFrontEndRN extends Component {
+import { StackNavigator } from 'react-navigation'
+import HabitView from './app/containers/HabitView'//these views not pushed...
+import SimpleView from './app/containers/SimpleView'//were for tests
+import Cool from './app/containers/Cool'//this one too
+
+class HabitualFrontEndRN extends Component {
+  static navigationOptions = {
+    title: 'Habit display',
+  };
   render() {
+    const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
-      <Picture />
-      <Text style={styles.instructions}>
-        Enter the name of the habit that you want to build
-      </Text>
-      <HabitTextInput />
-      <Text style={styles.instructions}>
-        What time of the day do you want to be reminded?
-      </Text>
-      <HabitTextInput />
-      <Text style={styles.instructions}>
-        How often do you want to be reminded?
-      </Text>
-      <HabitTextInput />
-      <HabitButton />
+      <HabitView />
+      <Button
+        style={{paddingTop: 100}}
+        onPress={() => navigate('Page')}
+        title="Cool Pagex"
+      />
+      <Button
+        onPress={() => navigate('Cool')}
+        title="Sweet Page"
+      />
+      <Button
+        onPress={() => navigate('Cool')}
+        title="Pages AF"
+      />
       </View>
     );
   }
 }
+
+const SimpleApp = StackNavigator({
+  Home: {screen: HabitualFrontEndRN },//these you declare, name, view
+  Page: {screen: SimpleView},
+  Cool: {screen: Cool}
+});
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'black',
+    backgroundColor: 'white',
   },
   welcome: {
     fontSize: 20,
@@ -58,7 +62,6 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('HabitualFrontEndRN', () => HabitualFrontEndRN);
-
+AppRegistry.registerComponent('HabitualFrontEndRN', () => SimpleApp);
 
 

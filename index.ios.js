@@ -14,7 +14,7 @@ import {
 import HabitButton from './app/components/Button.js'
 import Picture from './app/components/Picture'
 import HabitTextInput from './app/components/HabitTextInput'
-import NewHabitContainer from './app/components/NewHabit'
+import NewHabitContainer from './app/containers/NewHabitContainer'
 import ListContainer from './app/containers/ListContainer'
 
 export default class HabitualFrontEndRN extends Component {

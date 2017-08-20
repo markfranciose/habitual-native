@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { AppRegistry, View, TextInput, TouchableOpacity, Text, StyleSheet } from 'react-native';
+import DateTimePicker from 'react-native-modal-datetime-picker';
 
 export default class NewHabitContainer extends Component {
   // make this a container - container is sorta like view, component is sort of like partial
@@ -9,9 +10,19 @@ export default class NewHabitContainer extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { reminderName: '', reminderMessage: '' };
+    this.state = {
+      reminderName: '',
+      reminderMessage: '',
+      isTimePickerVisible: false
+    };
   }
 
+  _showTimePicker = () => this.setState({isTimePickerVisible: true});
+  _hideTimePicker = () => this.setState({isTimePickerVisible: false});
+  _handleTimePicked = (time) => {
+    console.log('A time has been picked: ', time);
+    this._hideTimePicker();
+  };
 
   render() {
     return (
@@ -33,6 +44,14 @@ export default class NewHabitContainer extends Component {
           placeholder="Message"
           onChangeText={(reminderMessage) => this.setState({reminderMessage})}
           value={this.state.reminderMessage}
+        />
+        <TouchableOpacity onPress={this._showTimePicker}>
+          <Text>Show TimePicker</Text>
+        </TouchableOpacity>
+        <DateTimePicker
+          isVisible={this.state.isTimePickerVisible}
+          onConfirm={this._handleTimePicked}
+          onCancel={this._hideTimePicker}
         />
         <TouchableOpacity onPress={this._onPressButton}>
           <View style={styles.button}>

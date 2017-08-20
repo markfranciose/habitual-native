@@ -10,39 +10,28 @@ import { StackNavigator } from 'react-navigation'
 // import SimpleView from './app/containers/SimpleView'//were for tests
 // import Cool from './app/containers/Cool'//this one too
 import HomeScreen from './app/containers/HomeScreen'
+import Response from './app/containers/Response';
 
-class HabitualFrontEndRN extends Component {
-  static navigationOptions = {
-    title: 'Habit display',
-  };
+class SimpleApp extends Component {
+  // static navigationOptions = {
+  //   title: 'Habit display',
+  // };
   render() {
-    const { navigate } = this.props.navigation;
+    // const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
-      <Button
-        style={{paddingTop: 100}}
-        onPress={() => navigate('Page')}
-        title="Cool Pagex"
-      />
-      <Button
-        onPress={() => navigate('Cool')}
-        title="Sweet Page"
-      />
-      <Button
-        onPress={() => navigate('Cool')}
-        title="Pages AF"
-      />
+          <Response />
       </View>
     );
   }
 }
 
-const SimpleApp = StackNavigator({
-  Home: {screen: HomeScreen},
-  //these you declare, name, view
-  // Page: {screen: SimpleView},
-  // Cool: {screen: Cool}
-});
+// const SimpleApp = StackNavigator({
+//   Home: {screen: HomeScreen},
+//   //these you declare, name, view
+//   // Page: {screen: SimpleView},
+//   // Cool: {screen: Cool}
+// });
 
 const styles = StyleSheet.create({
   container: {

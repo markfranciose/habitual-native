@@ -13,14 +13,10 @@ export default class ListContainer extends Component {
 
   render() {
     return (
-      <StatusBar
-     hidden={true}
-   />,
+      <StatusBar hidden={true} />,
       <ListView
-
         dataSource={this.state.dataSource}
-        renderRow={(rowData) => <Text>{rowData}</Text>}
-      />
+        renderRow={(rowData) => <Text>{rowData}</Text>} />
     );
   }
 }

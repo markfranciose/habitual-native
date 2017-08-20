@@ -3,6 +3,8 @@ import Picture from './app/components/Picture'
 import HabitTextInput from './app/components/HabitTextInput'
 import ListContainer from './app/containers/ListContainer'
 import DeviceInfo from 'react-native-device-info'
+import { StackNavigator } from 'react-navigation'
+import HomeScreen from './app/containers/HomeScreen'
 
 export default class HabitualFrontEndRN extends Component {
   constructor(props) {
@@ -15,15 +17,34 @@ export default class HabitualFrontEndRN extends Component {
   render() {
     const { navigate } = this.props.navigation;
     return (
+
       <Text>{this.state.user_id}</Text>
+
+      <View style={styles.container}>
+      <Button
+        style={{paddingTop: 100}}
+        onPress={() => navigate('Page')}
+        title="Cool Pagex"
+      />
+      <Button
+        onPress={() => navigate('Cool')}
+        title="Sweet Page"
+      />
+      <Button
+        onPress={() => navigate('Cool')}
+        title="Pages AF"
+      />
+      </View>
+
     );
   }
 }
 
 const SimpleApp = StackNavigator({
-  Home: {screen: HabitualFrontEndRN },//these you declare, name, view
-  Page: {screen: SimpleView},
-  Cool: {screen: Cool}
+  Home: {screen: HomeScreen},
+  //these you declare, name, view
+  // Page: {screen: SimpleView},
+  // Cool: {screen: Cool}
 });
 
 const styles = StyleSheet.create({

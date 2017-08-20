@@ -6,9 +6,10 @@ import {
 } from 'react-native';
 
 import { StackNavigator } from 'react-navigation'
-import HabitView from './app/containers/HabitView'//these views not pushed...
-import SimpleView from './app/containers/SimpleView'//were for tests
-import Cool from './app/containers/Cool'//this one too
+// import HabitView from './app/containers/HabitView'//these views not pushed...
+// import SimpleView from './app/containers/SimpleView'//were for tests
+// import Cool from './app/containers/Cool'//this one too
+import HomeScreen from './app/containers/HomeScreen'
 
 class HabitualFrontEndRN extends Component {
   static navigationOptions = {
@@ -18,7 +19,6 @@ class HabitualFrontEndRN extends Component {
     const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
-      <HabitView />
       <Button
         style={{paddingTop: 100}}
         onPress={() => navigate('Page')}
@@ -38,9 +38,10 @@ class HabitualFrontEndRN extends Component {
 }
 
 const SimpleApp = StackNavigator({
-  Home: {screen: HabitualFrontEndRN },//these you declare, name, view
-  Page: {screen: SimpleView},
-  Cool: {screen: Cool}
+  Home: {screen: HomeScreen},
+  //these you declare, name, view
+  // Page: {screen: SimpleView},
+  // Cool: {screen: Cool}
 });
 
 const styles = StyleSheet.create({

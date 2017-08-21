@@ -3,6 +3,7 @@ import {Text, View, Button, ActivityIndicator, StyleSheet, AppRegistry, FlatList
 import { StackNavigator } from 'react-navigation'
 import NewHabitContainer from './app/containers/NewHabitContainer'
 import HabitShow from './app/containers/HabitShow'
+//import DeviceInfo from 'react-native-device-info';
 
 
 var userIdentifier = '12345'
@@ -12,13 +13,15 @@ export default class HomeScreen extends Component {
   constructor() {
     super();
     this.state = {
+      //device_id: DeviceInfo.getUniqueID(),
       isLoading: true,
       habits: []
     };
   }
 
   componentWillMount() {
-    return fetch('http://localhost:3000/users/' + userIdentifier + '/habits')
+    console.log(this.state.device_id)
+    return fetch('https://habitualdb.herokuapp.com/users/' + userIdentifier + '/habits')
       .then((response) => response.json())
       .then((responseJson) => {
         this.setState({
@@ -42,7 +45,9 @@ export default class HomeScreen extends Component {
     }
     return (
       <View style={styles.container}>
+        <Button onPress={() => navigate('NewHab')} title={"create a new habit!"} />
         <Text style={styles.title}>Your Habits</Text>
+
         <FlatList
           data={this.state.habits}
 
@@ -57,7 +62,7 @@ export default class HomeScreen extends Component {
 const SimpleApp = StackNavigator({
   Home: {screen: HomeScreen},
   //these you declare, name, view
-  // Page: {screen: SimpleView},
+  NewHab: {screen: NewHabitContainer},
   Cool: {screen: HabitShow}
 });
 

@@ -12,7 +12,7 @@ export default class HabitView extends Component {
   }
 
   componentWillMount() {
-    return fetch('http://localhost:3000/users/1/habits/'+ this.state.habitId)
+    return fetch('https://habitualdb.herokuapp.com/users/12345/habits/'+ this.state.habitId)
       .then((response) => response.json())
       .then((responseJson) => {
         let ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});

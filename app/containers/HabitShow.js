@@ -1,5 +1,3 @@
-// fetch function can be cleaned up...
-
 import React, { Component } from 'react';
 import { ActivityIndicator, ListView, Text, View, Image } from 'react-native';
 

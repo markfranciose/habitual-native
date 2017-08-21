@@ -17,7 +17,7 @@ export default class HomeScreen extends Component {
   }
 
   componentWillMount() {
-    return fetch('http://localhost:3000/users/' + userIdentifier + '/habits')
+    return fetch('https://habitualdb.herokuapp.com/users/' + userIdentifier + '/habits')
       .then((response) => response.json())
       .then((responseJson) => {
         this.setState({

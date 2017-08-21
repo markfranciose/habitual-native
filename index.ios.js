@@ -59,13 +59,13 @@ export default class HomeScreen extends Component {
         <View style={styles.viewButton}>
           <TouchableOpacity onPress={() => navigate('NewHab')}>
             <View style={styles.createHabitB}>
-              <Text style={styles.createHabitT}>New Habit</Text>
+              <Text style={styles.createHabitT}>Add a Habit</Text>
             </View>
           </TouchableOpacity>
         </View>
         <View style={styles.viewList}>
           <View style={styles.habitContainer}>
-            <Text style={styles.habitsLabel}>Your Habits</Text>
+            <Text style={styles.habitsLabel}>Current Habits</Text>
             <FlatList
               style={styles.flatList}
               data={this.state.habits}

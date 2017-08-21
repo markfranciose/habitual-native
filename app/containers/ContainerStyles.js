@@ -1,6 +1,14 @@
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
+  header: {
+    // marginTop: 10,
+    backgroundColor: '#358797'
+  },
+  headerTitle: {
+    color: 'white',
+    fontWeight: '700',
+  },
   container: {
     flex: 1,
     backgroundColor: '#EDEDED',
@@ -47,7 +55,7 @@ export default StyleSheet.create({
     marginTop: 20,
     width: 240,
     alignItems: 'center',
-    backgroundColor: 'darkseagreen',
+    backgroundColor: '#2A5F6D',
     borderRadius: 10
   },
   createHabitB: {
@@ -71,53 +79,52 @@ export default StyleSheet.create({
   },
   newHabitView: {
     justifyContent: 'center',
-    width: 240,
     alignItems: 'center',
     flex: 1
   },
   habitContainer: {
     flex: 1,
     flexDirection: 'column',
-    justifyContent: 'flex-start'
+    justifyContent: 'flex-start',
+    // paddingBottom: 20,
   },
   listButton: {
     alignItems: 'center',
-    // fontSize:
-    // width: 200,
-    // backgroundColor: '#9e1f36',
   },
   listText: {
-    fontSize: 14,
+    fontSize: 18,
     color: 'white',
     fontWeight: '700',
     textAlign: 'center',
-    justifyContent: 'center',
+    // justifyContent: 'center',
     backgroundColor: '#358797',
     width: 200,
-    borderColor: 'white',
-    borderWidth: 4,
+    overflow: 'hidden',
+    borderColor: '#47b1c6',
+    borderWidth: 1,
     borderRadius: 10,
-    padding: 10,
-    marginVertical: 10,
+    padding: 14,
+    marginTop: 20,
   },
   habitsLabel: {
     // flex: 1,
     // flexDirection: 'column',
     backgroundColor: '#358797',
     textAlign: 'center',
-    // borderBottomColor: 'white',
+    borderColor: '#47b1c6',
     // borderBottomColor: '#bbb',
     // borderBottomWidth: 4,
-    // borderWidth: 4
+    borderWidth: 1,
     // width: 240,
     padding: 10,
     color: 'white',
-    fontSize: 18,
+    fontSize: 24,
     fontWeight: '600'
   },
   flatList: {
     // flex: 6,
     // width: 240,
     backgroundColor: '#2A5F6D',
+    paddingBottom: 200
   },
 });

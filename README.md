@@ -45,6 +45,9 @@ If there are errors with loading, in the root directory, reload npm by typing th
 
 ```npm install```
 
+To install the [Jest Testing Suite](https://facebook.github.io/jest/):
+
+```yarn add --dev jest
 
 *This application has been developed for Mac and iOS only.  Functionality on Android and Window/Linux-based systems is not guaranteed.*
 

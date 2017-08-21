@@ -43,6 +43,7 @@ export default class HomeScreen extends Component {
 
   render() {
     const { navigate } = this.props.navigation;
+    // console.log(navigate)
     if (this.state.isLoading) {
       return (
         <View style={{flex: 1, paddingTop: 20}}>
@@ -52,19 +53,30 @@ export default class HomeScreen extends Component {
     }
     return (
       <View style={styles.container}>
-        <TouchableOpacity onPress={() => navigate('NewHab')}>
-          <View style={styles.createHabitB}>
-            <Text style={styles.createHabitT}>New Habit</Text>
-          </View>
-        </TouchableOpacity>
-        <Text style={styles.label}>Your Habits</Text>
-
-        <FlatList
-          style={styles.flatList}
-          data={this.state.habits}
-
-          renderItem={({item}) => <Button onPress={() => navigate('Cool', {id: item.id})} title={item.name} style={styles.listItems}/>}
-        />
+        <View style={styles.viewTitle}>
+          <Text style={styles.appTitle}>Habitual</Text>
+        </View>
+        <View style={styles.viewButton}>
+          <TouchableOpacity onPress={() => navigate('NewHab')}>
+            <View style={styles.createHabitB}>
+              <Text style={styles.createHabitT}>New Habit</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.viewList}>
+          <Text style={styles.habitsLabel}>Your Habits</Text>
+          <FlatList
+            style={styles.flatList}
+            data={this.state.habits}
+            renderItem={({item}) =>
+              <TouchableOpacity
+                onPress={()=> navigate('Cool', {id: item.id})}
+                style={styles.listButton}>
+                <Text style={styles.listText}>{item.name}</Text>
+              </TouchableOpacity>
+            }
+          />
+        </View>
       </View>
     );
   }

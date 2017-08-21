@@ -21,5 +21,5 @@ export default StyleSheet.create({
     marginTop: 2,
     textAlign: 'center',
     height: 50,
-  }
+  },
 });

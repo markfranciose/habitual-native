@@ -3,31 +3,36 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
-    // flexDirection: 'row',
-    padding: 50,
-    // height: 50,
-    justifyContent: 'space-between',
+    // flexDirection: 'column',
+    // width: 280,
+    backgroundColor: '#EDEDED',
+    paddingTop: 35,
+    justifyContent: 'center',
     alignItems: 'center',
   },
-  flatList: {
-    // backgroundColor: 'pink',
-    // height: 10,
-    borderColor: 'lightgray',
-    borderRadius: 10,
-    borderWidth: 6,
-    padding: 40,
-    // marginVertical: 10,
+  viewTitle: {
+    marginTop: 25,
+    flex: 2,
+    justifyContent: 'center',
+    // flexDirection: 'row',
+    // flex: 1
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  viewButton: {
+    flex: 2,
+    justifyContent: 'center',
+    // flexDirection: 'row',
+    // flex: 1
   },
-  instructions: {
-    textAlign: 'center',
-    color: 'white',
-    marginBottom: 5,
+  viewList: {
+    // backgroundColor: 'darkseagreen',
+    // width: 100%,
+    flex: 5
+  },
+  appTitle: {
+    fontSize: 48,
+    color: '#358797',
+    fontWeight: '800',
+    // width: 280,
   },
   inputBox: {
     marginTop: 20,
@@ -53,11 +58,11 @@ export default StyleSheet.create({
     borderRadius: 10
   },
   createHabitB: {
-    // marginVertical: 20,
-    // marginTop: 100,
     width: 240,
     alignItems: 'center',
-    backgroundColor: 'darkcyan',
+    backgroundColor: '#358797',
+    borderWidth: 4,
+    borderColor: '#2A5F6D',
     borderRadius: 10,
   },
   buttonText: {
@@ -68,15 +73,50 @@ export default StyleSheet.create({
   createHabitT: {
     padding: 20,
     fontSize: 24,
-    fontWeight: '400',
+    fontWeight: '700',
     color: 'white'
   },
   newHabitView: {
     justifyContent: 'center',
+    width: 240,
     alignItems: 'center',
     flex: 1
   },
-  listItems: {
-    color: 'darkcyan'
-  }
+  listButton: {
+    alignItems: 'center',
+    // fontSize:
+    // width: 200,
+    // backgroundColor: '#9e1f36',
+  },
+  listText: {
+    fontSize: 14,
+    color: 'white',
+    fontWeight: '700',
+    textAlign: 'center',
+    backgroundColor: '#EE3F60',
+    width: 200,
+    borderColor: 'white',
+    borderWidth: 4,
+    borderRadius: 10,
+    padding: 10,
+    marginVertical: 10,
+  },
+  habitsLabel: {
+    backgroundColor: '#EE3F60',
+    textAlign: 'center',
+    borderColor: '#af243f',
+    borderWidth: 4,
+    width: 240,
+    padding: 10,
+    color: 'white',
+    fontSize: 18,
+    fontWeight: '600'
+  },
+  flatList: {
+    // borderColor: '#5b5a5a',
+    // alignItems: 'center',
+    // borderWidth: 4,
+    // width: 240,
+    backgroundColor: '#af243f',
+  },
 });

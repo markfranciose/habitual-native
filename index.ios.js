@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
-import {Text, View, Button, ActivityIndicator, StyleSheet, AppRegistry, FlatList} from 'react-native';
+import {Text, TouchableOpacity, View, Button, ActivityIndicator, StyleSheet, AppRegistry, FlatList} from 'react-native';
 import { StackNavigator } from 'react-navigation'
 import NewHabitContainer from './app/containers/NewHabitContainer'
 import HabitShow from './app/containers/HabitShow'
+import styles from './app/containers/ContainerStyles';
 //import DeviceInfo from 'react-native-device-info';
 
 
@@ -10,6 +11,12 @@ var userIdentifier = '12345'
 
 
 export default class HomeScreen extends Component {
+  static navigationOptions = {
+    // title: 'Test'
+    header: null,
+    // mode: 'modal',
+
+  }
   constructor() {
     super();
     this.state = {
@@ -45,44 +52,29 @@ export default class HomeScreen extends Component {
     }
     return (
       <View style={styles.container}>
-        <Button onPress={() => navigate('NewHab')} title={"create a new habit!"} />
-        <Text style={styles.title}>Your Habits</Text>
+        <TouchableOpacity onPress={() => navigate('NewHab')}>
+          <View style={styles.createHabitB}>
+            <Text style={styles.createHabitT}>New Habit</Text>
+          </View>
+        </TouchableOpacity>
+        <Text style={styles.label}>Your Habits</Text>
 
         <FlatList
+          style={styles.flatList}
           data={this.state.habits}
 
-          renderItem={({item}) => <Button onPress={() => navigate('Cool', {id: item.id})} title={item.name} style={styles.habit} />}
+          renderItem={({item}) => <Button onPress={() => navigate('Cool', {id: item.id})} title={item.name} style={styles.listItems}/>}
         />
       </View>
     );
   }
 }
 
-
 const SimpleApp = StackNavigator({
   Home: {screen: HomeScreen},
   //these you declare, name, view
   NewHab: {screen: NewHabitContainer},
   Cool: {screen: HabitShow}
-});
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'white',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: 'white',
-    marginBottom: 5,
-  },
 });
 
 AppRegistry.registerComponent('HabitualFrontEndRN', () => SimpleApp);

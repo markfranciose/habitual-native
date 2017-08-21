@@ -14,8 +14,7 @@ export default class ListContainer extends Component {
   render() {
     return (
       <StatusBar
-     hidden={true}
-   />,
+     hidden={true} />,
       <ListView
 
         dataSource={this.state.dataSource}

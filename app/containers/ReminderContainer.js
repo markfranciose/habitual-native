@@ -5,11 +5,15 @@ class Reminder extends Component{
   constructor(props){
     super(props);
 
-    console.log(props);
+    var date = new Date(this.props.rowData.created_at);
+    var options = { weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric' };
 
     this.state = {
-      // console.log(props);
-      moreData: this.props.rowData,
+      answer: this.props.rowData.answer,
+      created_at: date.toLocaleString('en-US', options)
     };
 
   }
@@ -17,9 +21,8 @@ class Reminder extends Component{
   render(){
     return (
       <View>
-        <Text>Did you do it?</Text>
-        <Text>Answer: {this.state.moreData.answer}{"\n"}</Text>
-        <Text>Time:{"\t\t\t"}{this.state.moreData.created_at}</Text>
+        <Text>Did you do it? {"\t" + this.state.answer}</Text>
+        <Text>Time:{"\t\t\t"}{this.state.created_at}</Text>
       </View>
     );
   };

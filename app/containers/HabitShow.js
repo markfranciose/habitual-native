@@ -50,12 +50,11 @@ export default class HabitView extends Component {
     return (
       <View style={{flex: 1, paddingTop: 20}}>
       <Text>{this.state.habitName}{"\n"}</Text>
-      <Text>Total Reminders: {totalReminders}</Text>
+      <Text>Total Reminders: {totalReminders}{"\n"}</Text>
+
         <ListView
           dataSource={this.state.dataSource}
-          // renderRow={(rowData) => <Text>Did you do it?{"\t"}{rowData.answer}{"\n"}Time:{"\n"}{rowData.created_at}{"\n\n"}</Text>}
-          renderRow={(rowData) => <Reminder rowData={rowData} /> }
-        />
+          renderRow={(rowData) => <Reminder rowData={rowData} /> } />
       </View>
     );
   }

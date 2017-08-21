@@ -1,51 +1,69 @@
-import React, { Component } from 'react';
-import {
-  AppRegistry, Button, StyleSheet,
-  Text,
-  View
-} from 'react-native';
-import HabitButton from './app/components/Button.js'
-import Picture from './app/components/Picture'
-import HabitTextInput from './app/components/HabitTextInput'
-import NewHabitContainer from './app/containers/NewHabitContainer'
-// import ListContainer from './app/containers/ListContainer'
+import React, {Component} from 'react';
+import {Text, View, Button, ActivityIndicator, StyleSheet, AppRegistry, FlatList} from 'react-native';
 import { StackNavigator } from 'react-navigation'
-// import HabitView from './app/containers/HabitView'//these views not pushed...
-// import SimpleView from './app/containers/SimpleView'//were for tests
-// import Cool from './app/containers/Cool'//this one too
-import HomeScreen from './app/containers/HomeScreen'
+import NewHabitContainer from './app/containers/NewHabitContainer'
+import HabitShow from './app/containers/HabitShow'
+//import DeviceInfo from 'react-native-device-info';
 
-class HabitualFrontEndRN extends Component {
-  static navigationOptions = {
-    title: 'Habit display',
-  };
+
+var userIdentifier = '12345'
+
+
+export default class HomeScreen extends Component {
+  constructor() {
+    super();
+    this.state = {
+      //device_id: DeviceInfo.getUniqueID(),
+      isLoading: true,
+      habits: []
+    };
+  }
+
+  componentWillMount() {
+    console.log(this.state.device_id)
+    return fetch('https://habitualdb.herokuapp.com/users/' + userIdentifier + '/habits')
+      .then((response) => response.json())
+      .then((responseJson) => {
+        this.setState({
+          isLoading: false,
+          habits: responseJson,
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
   render() {
     const { navigate } = this.props.navigation;
+    if (this.state.isLoading) {
+      return (
+        <View style={{flex: 1, paddingTop: 20}}>
+          <ActivityIndicator />
+        </View>
+      );
+    }
     return (
       <View style={styles.container}>
-      <Button
-        style={{paddingTop: 100}}
-        onPress={() => navigate('Page')}
-        title="Cool Pagex"
-      />
-      <Button
-        onPress={() => navigate('Cool')}
-        title="Sweet Page"
-      />
-      <Button
-        onPress={() => navigate('Cool')}
-        title="Pages AF"
-      />
+        <Button onPress={() => navigate('NewHab')} title={"create a new habit!"} />
+        <Text style={styles.title}>Your Habits</Text>
+
+        <FlatList
+          data={this.state.habits}
+
+          renderItem={({item}) => <Button onPress={() => navigate('Cool', {id: item.id})} title={item.name} style={styles.habit} />}
+        />
       </View>
     );
   }
 }
 
+
 const SimpleApp = StackNavigator({
   Home: {screen: HomeScreen},
   //these you declare, name, view
-  // Page: {screen: SimpleView},
-  // Cool: {screen: Cool}
+  NewHab: {screen: NewHabitContainer},
+  Cool: {screen: HabitShow}
 });
 
 const styles = StyleSheet.create({
@@ -69,4 +87,4 @@ const styles = StyleSheet.create({
 
 AppRegistry.registerComponent('HabitualFrontEndRN', () => SimpleApp);
 
-
+          // renderItem={({item}) => <Button onPress={() => navigate('Cool')} title={item.name} style={styles.habit} />}

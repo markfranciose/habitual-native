@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { ActivityIndicator, ListView, Text, View, Image } from 'react-native';
+import Reminder from './ReminderContainer';
 
 export default class HabitView extends Component {
   constructor(props) {
@@ -7,6 +8,7 @@ export default class HabitView extends Component {
     this.state = {
       habitId: this.props.navigation.state.params.id,
       isLoading: true,
+      habitStats: '',
       habitName: ""
     }
   }
@@ -17,8 +19,10 @@ export default class HabitView extends Component {
       .then((responseJson) => {
         let ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
         this.setState({
+          habitName: responseJson.name,
+          habitStats: responseJson.stats,
           isLoading: false,
-          dataSource: ds.cloneWithRows(responseJson),
+          dataSource: ds.cloneWithRows(responseJson.reminders),
         }, function() {
           // do something with new state
         });
@@ -29,7 +33,10 @@ export default class HabitView extends Component {
   }
 
   render() {
-    console.log(this.props)
+    console.log(this.state.habitStats)
+    let totalReminders = this.state.habitStats.totalReminders
+
+
     if (this.state.isLoading) {
       return (
         <View style={{flex: 1, paddingTop: 20}}>
@@ -38,13 +45,16 @@ export default class HabitView extends Component {
       );
     }
 
+    console.log(this.state.dataSource);
+
     return (
       <View style={{flex: 1, paddingTop: 20}}>
-      <Text> Could get the habit name with a lil change of the controller</Text>
+      <Text>{this.state.habitName}{"\n"}</Text>
+      <Text>Total Reminders: {totalReminders}{"\n"}</Text>
+      <DeleteModal id={this.state.habitId}/>
         <ListView
           dataSource={this.state.dataSource}
-          renderRow={(rowData) => <Text>Did You do it?  {rowData.answer} {"\n"}Time: {rowData.created_at}{"\n"}{"\n"}</Text>}
-        />
+          renderRow={(rowData) => <Reminder rowData={rowData} /> } />
       </View>
     );
   }

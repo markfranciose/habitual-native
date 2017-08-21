@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import { AppRegistry, View, TextInput, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import TimePicker from 'react-native-modal-datetime-picker';
+import styles from './ContainerStyles';
+
+var moment = require('moment');
 
 export default class NewHabitContainer extends Component {
   // make this a container - container is sorta like view, component is sort of like partial
@@ -11,43 +14,76 @@ export default class NewHabitContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      reminderName: '',
-      reminderMessage: '',
-      isTimePickerVisible: false
+      habitName: null,
+      startTime: null,
+      isTimePickerVisible: false,
+      isTimeChosen: false,
+      validInput: false
     };
   }
 
-  _showTimePicker = () => this.setState({isTimePickerVisible: true});
-  _hideTimePicker = () => this.setState({isTimePickerVisible: false});
+  // _showTimePicker = () => this.setState({isTimePickerVisible: true});
+  // _hideTimePicker = () => this.setState({isTimePickerVisible: false});
+
+
+  _submitForm = () => {
+    // console.log('Yo@@@@@@@@@@@@@@');
+    let habitName = this.state.habitName;
+    let habitTime = this.state.startTime;
+    return fetch('https://habitualdb.herokuapp.com/users/12345/habits', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        habit: {
+          name: habitName,
+          reminder_frequency: 1,
+          reminder_time: habitTime
+        }
+      })
+    })
+    // .then((response) => response.json())
+    // .then((responseJson) => {
+    //   return responseJson.;
+    // })
+    // .catch((error) => {
+    //   console.error(error);
+    // });
+  }
+
+  _checkValidInput = () => {
+    if (this.state.isTimeChosen && this.state.habitName) {
+
+    }
+  };
+
+  _toggleTimePicker = () => this.setState({isTimePickerVisible: !this.state.isTimePickerVisible});
+
   _handleTimePicked = (time) => {
-    console.log('A time has been picked: ', time);
-    this._hideTimePicker();
+    this._checkValidInput;
+    // console.log('A time has been picked: ', time);
+    this.setState({
+      isTimePickerVisible: !this.state.isTimePickerVisible,
+      isTimeChosen: true,
+      startTime: time
+    });
   };
 
   render() {
     return (
-      <View style={{
-        justifyContent: 'center',
-        alignItems: 'center',
-        flex: 1,
-        // flexDirection: 'row'
-      }}>
+      <View style={styles.newHabitView}>
         <Text style={styles.label}>New Reminder</Text>
         <TextInput
           style={styles.inputBox}
           placeholder="Name"
-          onChangeText={(reminderName) => this.setState({reminderName})}
-          value={this.state.reminderName}
+          onChangeText={(habitName) => this.setState({habitName})}
+          value={this.state.habitName}
         />
-        <TextInput
-          style={styles.inputBox}
-          placeholder="Message"
-          onChangeText={(reminderMessage) => this.setState({reminderMessage})}
-          value={this.state.reminderMessage}
-        />
-        <TouchableOpacity onPress={this._showTimePicker}>
+        <TouchableOpacity onPress={this._toggleTimePicker}>
           <View style={styles.button}>
-            <Text style={styles.buttonText}>Start Time</Text>
+            <Text style={styles.buttonText}>{this.state.isTimeChosen ? moment(this.state.startTime).format('h:mm a') : "Start Time"}</Text>
           </View>
         </TouchableOpacity>
         <TimePicker
@@ -55,9 +91,11 @@ export default class NewHabitContainer extends Component {
           mode='time'
           titleIOS='Choose a Time'
           onConfirm={this._handleTimePicked}
-          onCancel={this._hideTimePicker}
+          onCancel={this._toggleTimePicker}
         />
-        <TouchableOpacity onPress={this._onPressButton}>
+        <TouchableOpacity
+          isVisible={this.state.validInput}
+          onPress={this._submitForm}>
           <View style={styles.button}>
             <Text style={styles.buttonText}>Submit</Text>
           </View>
@@ -66,34 +104,3 @@ export default class NewHabitContainer extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  inputBox: {
-    marginTop: 20,
-    flex: .05,
-    width: 240,
-    fontWeight: '600',
-    textAlign: 'center',
-    borderColor: 'lightgray',
-    borderWidth: 2,
-    padding: 10,
-    borderRadius: 10
-  },
-  label: {
-    marginTop: 20,
-    fontSize: 24,
-    fontWeight: '600'
-  },
-  button: {
-    marginTop: 20,
-    width: 240,
-    alignItems: 'center',
-    backgroundColor: 'darkseagreen',
-    borderRadius: 10
-  },
-  buttonText: {
-    padding: 10,
-    fontWeight: '600',
-    color: 'white'
-  }
-})

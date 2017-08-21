@@ -1,5 +1,8 @@
 # Habit Builder - Front End
-Welcome to the Habit Builder's front end repository.  To get started, your local machine will need to have [Node]([links](http://wikipedia.org)) and [Node Package Manager](https://www.npmjs.com/) (npm) installed. While npm does have the capability to handle module version control, this application is best installed using Facebook's yarn.
+Welcome to the Habit Builder's front end repository.
+
+## Installation
+To get started, your local machine will need to have [Node](http://wikipedia.org) and [Node Package Manager](https://www.npmjs.com/) (npm) installed. While npm does have the capability to handle module version control, this application is best installed using Facebook's yarn.
 
 If you do not have either node or yarn installed, follow these installations steps:
 
@@ -39,4 +42,10 @@ After everything is installed, run the application by entering the following com
 The first execution of this function will take approximately 5-6 minutes.  It is important to let the full process take place.  If the emulator pops up, **please do not open the program**.  XCode will automatically open the app when all modules and files have been cached to the emulator.
 
 *This application has been developed for Mac and iOS only.  Functionality on Android and Window/Linux-based systems is not guaranteed.*
+
+## Contributors
+- Mark Franciose [@markfranciose](https://github.com/markfranciose)
+- Tony Rodriguez [@tony-rodriguez](https://github.com/tony-rodriguez)
+- Matthew Cataldi [@mjcataldi](https://github.com/mjcataldi)
+- Sanjay Nelson [@sanjaynelson](https://github.com/sanjaynelson)
 

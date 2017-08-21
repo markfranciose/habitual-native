@@ -13,7 +13,8 @@
 		"react-native-device-info": "^0.11.0",
 		"react-native-modal-datetime-picker": "^4.9.0",
 		"react-navigation": "^1.0.0-beta.12",
-		"watchman": "^0.1.8"
+		"watchman": "^0.1.8",
+		"yarn": "^0.27.5"
 	},
 	"devDependencies": {
 		"babel-jest": "20.0.3",

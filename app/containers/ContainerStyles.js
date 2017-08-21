@@ -60,9 +60,9 @@ export default StyleSheet.create({
   createHabitB: {
     width: 240,
     alignItems: 'center',
-    backgroundColor: '#358797',
-    borderWidth: 4,
-    borderColor: '#2A5F6D',
+    backgroundColor: '#F9AA3A',
+    // borderWidth: 4,
+    // borderColor: 'white',
     borderRadius: 10,
   },
   buttonText: {
@@ -93,7 +93,8 @@ export default StyleSheet.create({
     color: 'white',
     fontWeight: '700',
     textAlign: 'center',
-    backgroundColor: '#EE3F60',
+    justifyContent: 'center',
+    backgroundColor: '#358797',
     width: 200,
     borderColor: 'white',
     borderWidth: 4,
@@ -102,10 +103,12 @@ export default StyleSheet.create({
     marginVertical: 10,
   },
   habitsLabel: {
-    backgroundColor: '#EE3F60',
+    backgroundColor: '#358797',
     textAlign: 'center',
-    borderColor: '#af243f',
-    borderWidth: 4,
+    // borderBottomColor: 'white',
+    // borderBottomColor: '#bbb',
+    // borderBottomWidth: 4,
+    // borderWidth: 4
     width: 240,
     padding: 10,
     color: 'white',
@@ -113,10 +116,7 @@ export default StyleSheet.create({
     fontWeight: '600'
   },
   flatList: {
-    // borderColor: '#5b5a5a',
-    // alignItems: 'center',
-    // borderWidth: 4,
     // width: 240,
-    backgroundColor: '#af243f',
+    backgroundColor: '#2A5F6D',
   },
 });

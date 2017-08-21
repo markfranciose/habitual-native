@@ -3,8 +3,6 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
   container: {
     flex: 1,
-    // flexDirection: 'column',
-    // width: 280,
     backgroundColor: '#EDEDED',
     paddingTop: 35,
     justifyContent: 'center',
@@ -12,21 +10,16 @@ export default StyleSheet.create({
   },
   viewTitle: {
     marginTop: 25,
-    flex: 2,
+    flex: 1,
     justifyContent: 'center',
-    // flexDirection: 'row',
-    // flex: 1
   },
   viewButton: {
-    flex: 2,
+    flex: 1,
     justifyContent: 'center',
-    // flexDirection: 'row',
-    // flex: 1
   },
   viewList: {
-    // backgroundColor: 'darkseagreen',
-    // width: 100%,
-    flex: 5
+    flex: 4,
+    flexDirection: 'row',
   },
   appTitle: {
     fontSize: 48,
@@ -82,6 +75,11 @@ export default StyleSheet.create({
     alignItems: 'center',
     flex: 1
   },
+  habitContainer: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'flex-start'
+  },
   listButton: {
     alignItems: 'center',
     // fontSize:
@@ -103,19 +101,22 @@ export default StyleSheet.create({
     marginVertical: 10,
   },
   habitsLabel: {
+    // flex: 1,
+    // flexDirection: 'column',
     backgroundColor: '#358797',
     textAlign: 'center',
     // borderBottomColor: 'white',
     // borderBottomColor: '#bbb',
     // borderBottomWidth: 4,
     // borderWidth: 4
-    width: 240,
+    // width: 240,
     padding: 10,
     color: 'white',
     fontSize: 18,
     fontWeight: '600'
   },
   flatList: {
+    // flex: 6,
     // width: 240,
     backgroundColor: '#2A5F6D',
   },

@@ -64,18 +64,20 @@ export default class HomeScreen extends Component {
           </TouchableOpacity>
         </View>
         <View style={styles.viewList}>
-          <Text style={styles.habitsLabel}>Your Habits</Text>
-          <FlatList
-            style={styles.flatList}
-            data={this.state.habits}
-            renderItem={({item}) =>
-              <TouchableOpacity
-                onPress={()=> navigate('Cool', {id: item.id})}
-                style={styles.listButton}>
-                <Text style={styles.listText}>{item.name}</Text>
-              </TouchableOpacity>
-            }
-          />
+          <View style={styles.habitContainer}>
+            <Text style={styles.habitsLabel}>Your Habits</Text>
+            <FlatList
+              style={styles.flatList}
+              data={this.state.habits}
+              renderItem={({item}) =>
+                <TouchableOpacity
+                  onPress={()=> navigate('Cool', {id: item.id})}
+                  style={styles.listButton}>
+                  <Text style={styles.listText}>{item.name}</Text>
+                </TouchableOpacity>
+              }
+            />
+          </View>
         </View>
       </View>
     );

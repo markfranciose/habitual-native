@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { ActivityIndicator, ListView, Text, View, Image } from 'react-native';
 import Reminder from './ReminderContainer';
+import DeleteModal from '../components/DeleteModal'
 
 export default class HabitView extends Component {
   constructor(props) {

@@ -51,7 +51,7 @@ export default class HabitView extends Component {
       <View style={{flex: 1, paddingTop: 20}}>
       <Text>{this.state.habitName}{"\n"}</Text>
       <Text>Total Reminders: {totalReminders}{"\n"}</Text>
-
+      <DeleteModal id={this.state.habitId}/>
         <ListView
           dataSource={this.state.dataSource}
           renderRow={(rowData) => <Reminder rowData={rowData} /> } />

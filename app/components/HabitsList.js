@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FlatList, Text, View} from 'react-native';
+import { FlatList, Text, View } from 'react-native';
 import styles from './ComponentStyles';
 
 export default class HabitsList extends Component {

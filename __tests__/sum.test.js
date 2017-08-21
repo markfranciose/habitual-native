@@ -1,41 +1,58 @@
-// This is the basic formatting
-// To run, go the console and type 'npm test'
+// // This is the basic formatting
+// // To run, go the console and type 'npm test'
 
-const sum = require('./sum');
+// const sum = require('./sum');
 
-test('adds 1 + 2 to equal 3', () => {
-  expect(sum(1, 2)).toBe(3);
-});
+// test('adds 1 + 2 to equal 3', () => {
+//   expect(sum(1, 2)).toBe(3);
+// });
 
-// test with a normal callback
-test('the data is peanut butter', done => {
-  function callback(data){
-    expect(data).toBe('peanut butter');
-    done();
-  }
+// // test with a normal callback
+// test('the data is peanut butter', done => {
+//   function callback(data){
+//     expect(data).toBe('peanut butter');
+//     done();
+//   }
 
-  fetchData(callback);
-})
+//   fetchData(callback);
+// })
 
 
 
-// Promises
-test('the data is peanut butter', () => {
-  expect(assertions(1));
+// // Promises
+// test('the data is peanut butter', () => {
+//   expect(assertions(1));
 
-  return fetchData().then(data => {
-    expect(data).toBe('peanut butter');
-  });
+//   return fetchData().then(data => {
+//     expect(data).toBe('peanut butter');
+//   });
 
-});
+// });
 
-test("the fetch fails with an error", () => {
-  expect.assertions(1);
+// test("the fetch fails with an error", () => {
+//   expect.assertions(1);
 
-  return fetchData().catch(e =>
-    expect(e).toMatch('error')
-  );
-});
+//   return fetchData().catch(e =>
+//     expect(e).toMatch('error')
+//   );
+// });
+
+// function forEach(items, callback){
+//   for(let i = 0; i < items.length; i++){
+//     callback(items[i]);
+//   }
+// }
+
+// const mockCallback = jest.fn();
+// const array = [0,1];
+// forEach(array, mockCallback);
+// expect(mockCallback.mock.calls.length).toBe(array.length)
+
+
+
+
+
+
 
 
 

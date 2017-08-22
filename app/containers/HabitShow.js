@@ -56,9 +56,7 @@ export default class HabitView extends Component {
       <Text>Total Reminders: {totalReminders}{"\n"}</Text>
       <Text>Times you did it: {"\t"}{"\t"}{didHabit}{"\t"} {(percentYes * 100).toFixed(2)}% </Text>
       <Text>Times you missed it: {"\t"}{notDidHabit}{"\t"} {percentNo}%</Text>
-      <Text></Text>
       <DeleteModal id={this.state.habitId}/>
-
         <ListView
           dataSource={this.state.dataSource}
           renderRow={(rowData) => <Reminder rowData={rowData} /> } />

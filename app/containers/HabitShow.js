@@ -4,7 +4,7 @@ import Reminder from './ReminderContainer';
 import styles from './ContainerStyles'
 import DarkTheme from '../components/StatusBarStyles'
 import DeleteModal from '../components/DeleteModal'
-import VectorWidget from './components/VectorWidget'
+import StatisticsModal from '../components/StatisticsModal'
 
 export default class HabitView extends Component {
   static navigationOptions = {
@@ -64,21 +64,16 @@ export default class HabitView extends Component {
         paddingTop: 20,
         backgroundColor: '#EDEDED'
       }}>
-      <DarkTheme/>
-      <Text>{this.state.habitName}{"\n"}</Text>
-      <Text>Total Reminders: {totalReminders}{"\n"}</Text>
-      <DeleteModal id={this.state.habitId}/>
-        <ListView
-          dataSource={this.state.dataSource}
-          renderRow={(rowData) => <Reminder rowData={rowData} /> } />
-      </View>
+        <DarkTheme/>
+
+        <Text>{this.state.habitName}{"\n"}</Text>
+        <Text>Total Reminders: {totalReminders}{"\n"}</Text>
+        <StatisticsModal id={this.state.habitId}/>
+        <DeleteModal id={this.state.habitId}/>
+          <ListView
+            dataSource={this.state.dataSource}
+            renderRow={(rowData) => <Reminder rowData={rowData} /> } />
+        </View>
     );
   }
 }
-
-// const styles = StyleSheet.create({
-//   vector: {
-//     width: 100,
-//     height: 100
-//   },
-// });

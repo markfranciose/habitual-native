@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
 import {Text, View, ActivityIndicator} from 'react-native';
-import HabitsList from '../components/HabitsList'
-import { StackNavigator } from 'react-navigation'
+import HabitsList from '../components/HabitsList';
+import { StackNavigator } from 'react-navigation';
+import { Home } from './ContainerStyles';
 
-
-var userIdentifier = '12345'
-
+var userIdentifier = '12345';
 
 export default class HomeScreen extends Component {
   constructor() {
@@ -40,12 +39,12 @@ export default class HomeScreen extends Component {
       );
     }
     return (
-      <View style={styles.container}>
-        <Text style={styles.title}>Your Habits</Text>
+      <View style={Home.container}>
+        <Text style={Home.title}>Your Habits</Text>
         <FlatList
           data={this.state.habits}
-          // style=(styles.flatList)
-          renderItem={({item}) => <Text style={styles.habit}>{item.name}</Text>}
+          // style=(Home.flatList)
+          renderItem={({item}) => <Text style={Home.habit}>{item.name}</Text>}
         />
       </View>
     );
@@ -57,29 +56,7 @@ const SimpleApp = StackNavigator({
   Home: {screen: HabitsList you can pass},
   //these you declare, name, view
   // Page: {screen: SimpleView},
-  // Cool: {screen: Cool}
-});
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'pink',
-  },
-  flatList: {
-    background: 'pink',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: 'white',
-    marginBottom: 5,
-  },
+  // HabitShow: {screen: HabitShow}
 });
 
 AppRegistry.registerComponent('HabitualFrontEndRN', () => SimpleApp);

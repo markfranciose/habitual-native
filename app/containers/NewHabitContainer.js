@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { AppRegistry, View, TextInput, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import TimePicker from 'react-native-modal-datetime-picker';
-import styles from './ContainerStyles';
+import { NewHabit } from './ContainerStyles';
 
 var moment = require('moment');
 
@@ -76,17 +76,16 @@ export default class NewHabitContainer extends Component {
 
   render() {
     return (
-      <View style={styles.newHabitView}>
-        <Text style={styles.label}>New Reminder</Text>
+      <View style={NewHabit.newHabitView}>
+        <Text style={NewHabit.label}>New Reminder</Text>
         <TextInput
-          style={styles.inputBox}
+          style={NewHabit.inputBox}
           placeholder="Name"
           onChangeText={(habitName) => this.setState({habitName})}
-          value={this.state.habitName}
-        />
+          value={this.state.habitName} />
         <TouchableOpacity onPress={this._toggleTimePicker}>
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>{this.state.isTimeChosen ? moment(this.state.startTime).format('h:mm a') : "Start Time"}</Text>
+          <View style={NewHabit.button}>
+            <Text style={NewHabit.buttonText}>{this.state.isTimeChosen ? moment(this.state.startTime).format('h:mm a') : "Start Time"}</Text>
           </View>
         </TouchableOpacity>
         <TimePicker
@@ -94,13 +93,12 @@ export default class NewHabitContainer extends Component {
           mode='time'
           titleIOS='Choose a Time'
           onConfirm={this._handleTimePicked}
-          onCancel={this._toggleTimePicker}
-        />
+          onCancel={this._toggleTimePicker} />
         <TouchableOpacity
           isVisible={this.state.validInput}
           onPress={this._submitForm}>
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>Submit</Text>
+          <View style={NewHabit.button}>
+            <Text style={NewHabit.buttonText}>Submit</Text>
           </View>
         </TouchableOpacity>
       </View>

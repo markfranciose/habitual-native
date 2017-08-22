@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
+import { ReminderStyle } from './ContainerStyles';
 
 class Reminder extends Component{
   constructor(props){
@@ -20,9 +21,9 @@ class Reminder extends Component{
 
   render(){
     return (
-      <View>
-        <Text>Did you do it? {"\t" + this.state.answer}</Text>
-        <Text>Time:{"\t\t\t"}{this.state.created_at}</Text>
+      <View style={ ReminderStyle.container }>
+        <Text style={ ReminderStyle.answer }>{this.state.answer}</Text>
+        <Text style={ ReminderStyle.date }>{this.state.created_at}</Text>
       </View>
     );
   };

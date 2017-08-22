@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Modal, Text, TouchableHighlight, View, Button } from 'react-native';
+import { Modal, Text, TouchableHighlight, TouchableOpacity, View, Button } from 'react-native';
+import { Home } from '../containers/ContainerStyles';
 
 export default class DeleteModal extends Component {
 
@@ -19,9 +20,8 @@ export default class DeleteModal extends Component {
 
   render() {
     return (
-      <View style={{marginTop: 22}}>
+      <View>
         <Modal
-          animationType={"fade"}
           transparent={false}
           visible={this.state.modalVisible}
           onRequestClose={() => {alert("Modal has been closed.")}}
@@ -41,10 +41,10 @@ export default class DeleteModal extends Component {
          </View>
         </Modal>
 
-        <Button title="Delete this Habit" onPress={() => {
-          this.setModalVisible(true)
-        }}/>
-
+        <TouchableOpacity onPress={() => {this.setModalVisible(true)} }
+          style={Home.listButton} >
+          <Text style={Home.deleteText}>Delete</Text>
+        </TouchableOpacity>
       </View>
     );
   }

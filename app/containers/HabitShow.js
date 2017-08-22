@@ -17,7 +17,7 @@ export default class HabitView extends Component {
       habitId: this.props.navigation.state.params.id,
       isLoading: true,
       habitStats: '',
-      habitName: ""
+      habitName: ''
     }
   }
 
@@ -43,8 +43,11 @@ export default class HabitView extends Component {
   }
 
   render() {
-    console.log(this.state.habitStats)
     let totalReminders = this.state.habitStats.totalReminders
+    let didHabit = this.state.habitStats.yesReminders
+    let notDidHabit = totalReminders - didHabit
+    let percentYes = this.state.habitStats.percentageAccepted
+    let percentNo = ((1 - percentYes) * 100).toFixed(2)
 
 
     if (this.state.isLoading) {
@@ -55,8 +58,6 @@ export default class HabitView extends Component {
       );
     }
 
-    console.log(this.state.dataSource);
-
     return (
       <View style={{
         flex: 1,
@@ -65,7 +66,10 @@ export default class HabitView extends Component {
       }}>
       <DarkTheme/>
       <Text>{this.state.habitName}{"\n"}</Text>
+      <Text>You have had this habit for: __days</Text>
       <Text>Total Reminders: {totalReminders}{"\n"}</Text>
+      <Text>Times you did it: {"\t"}{"\t"}{didHabit}{"\t"} {(percentYes * 100).toFixed(2)}% </Text>
+      <Text>Times you missed it: {"\t"}{notDidHabit}{"\t"} {percentNo}%</Text>
       <DeleteModal id={this.state.habitId}/>
         <ListView
           dataSource={this.state.dataSource}

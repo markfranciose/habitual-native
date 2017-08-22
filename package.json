@@ -7,7 +7,10 @@
 		"test": "jest"
 	},
 	"dependencies": {
+		"art": "^0.10.1",
 		"babel-preset-react-native": "^2.1.0",
+		"d3": "^4.10.0",
+		"d3-shape": "^1.2.0",
 		"react": "16.0.0-alpha.12",
 		"react-native": "0.47.1",
 		"react-native-cli": "^2.0.1",

@@ -4,6 +4,7 @@ import Reminder from './ReminderContainer';
 import styles from './ContainerStyles'
 import DarkTheme from '../components/StatusBarStyles'
 import DeleteModal from '../components/DeleteModal'
+import VectorWidget from './components/VectorWidget'
 
 export default class HabitView extends Component {
   static navigationOptions = {
@@ -74,3 +75,10 @@ export default class HabitView extends Component {
     );
   }
 }
+
+// const styles = StyleSheet.create({
+//   vector: {
+//     width: 100,
+//     height: 100
+//   },
+// });

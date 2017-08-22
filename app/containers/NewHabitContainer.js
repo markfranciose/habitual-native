@@ -6,6 +6,9 @@ import styles from './ContainerStyles';
 var moment = require('moment');
 
 export default class NewHabitContainer extends Component {
+   static navigationOptions = {
+    title: "Grow Yoself",
+  }
   // make this a container - container is sorta like view, component is sort of like partial
   // set state whenever text is updated, use fetch to make post
   // touchable opacity button to send off creation

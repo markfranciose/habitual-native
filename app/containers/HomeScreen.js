@@ -44,7 +44,7 @@ export default class HomeScreen extends Component {
         <Text style={styles.title}>Your Habits</Text>
         <FlatList
           data={this.state.habits}
-
+          // style=(styles.flatList)
           renderItem={({item}) => <Text style={styles.habit}>{item.name}</Text>}
         />
       </View>
@@ -65,7 +65,10 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'white',
+    backgroundColor: 'pink',
+  },
+  flatList: {
+    background: 'pink',
   },
   welcome: {
     fontSize: 20,

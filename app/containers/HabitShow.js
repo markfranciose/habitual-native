@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
-import { ActivityIndicator, ListView, Text, View, Image } from 'react-native';
+import { ActivityIndicator, ListView, Text, View, Image, StatusBar } from 'react-native';
 import Reminder from './ReminderContainer';
+import styles from './ContainerStyles'
+import DarkTheme from '../components/StatusBarStyles'
+import DeleteModal from '../components/DeleteModal'
 
 export default class HabitView extends Component {
+  static navigationOptions = {
+    title: "Details",
+    headerStyle: styles.header,
+    headerTitleStyle: styles.headerTitle
+  }
   constructor(props) {
     super(props);
     this.state = {
@@ -12,6 +20,8 @@ export default class HabitView extends Component {
       habitName: ""
     }
   }
+
+  // const { title } = this.state.habitName
 
   componentWillMount() {
     return fetch('https://habitualdb.herokuapp.com/users/12345/habits/'+ this.state.habitId)
@@ -48,7 +58,12 @@ export default class HabitView extends Component {
     console.log(this.state.dataSource);
 
     return (
-      <View style={{flex: 1, paddingTop: 20}}>
+      <View style={{
+        flex: 1,
+        paddingTop: 20,
+        backgroundColor: '#EDEDED'
+      }}>
+      <DarkTheme/>
       <Text>{this.state.habitName}{"\n"}</Text>
       <Text>Total Reminders: {totalReminders}{"\n"}</Text>
       <DeleteModal id={this.state.habitId}/>

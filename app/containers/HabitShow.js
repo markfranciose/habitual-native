@@ -10,6 +10,8 @@ export default class HabitView extends Component {
   constructor(props) {
     super(props);
     console.log(props);
+    console.log(this.props.navigation);
+
     this.state = {
       habitId: this.props.navigation.state.params.id,
       isLoading: true,

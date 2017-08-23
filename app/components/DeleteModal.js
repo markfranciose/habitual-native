@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal, Text, TouchableHighlight, TouchableOpacity, View, Button } from 'react-native';
+import { Modal, Text, TouchableHighlight, TouchableOpacity, View, Button, PushNotificationIOS } from 'react-native';
 import { Home, ButtonStyles } from '../containers/ContainerStyles';
 
 export default class DeleteModal extends Component {
@@ -16,6 +16,7 @@ export default class DeleteModal extends Component {
   deleteThisHabit(){
     console.log(this.state.habitId)
     fetch('https://habitualdb.herokuapp.com/users/12345/habits/' + this.state.habitId, {method: 'DELETE'})
+    PushNotificationIOS.cancelLocalNotifications({ habitID: this.state.habitId })
   }
 
   render() {

@@ -25,8 +25,12 @@ let positiveResponse = new NotificationAction({
   })
   .then((response) => response.json())
   .then((responseJson) => {
-    // console.log("Reminder successfully created with id: " + responseJson.id);
+    console.log("Sent request for reminder")
+    console.log(responseJson);
   })
+  .catch((error) => {
+    console.error(error);
+  });
   completed();
 });
 
@@ -49,8 +53,12 @@ let negativeResponse = new NotificationAction({
   })
   .then((response) => response.json())
   .then((responseJson) => {
-    // console.log("Reminder successfully created with id: " + responseJson.id);
+    console.log("Sent request for reminder")
+    console.log(responseJson);
   })
+  .catch((error) => {
+    console.error(error);
+  });
   completed();
 });
 
@@ -106,7 +114,7 @@ export default class NewHabitContainer extends Component {
         category: "REMINDER_RESPONSES",
         userInfo: { habitID: responseJson.id },
       })
-      // console.log("Habit successfully created with id: " + responseJson.id);
+      console.log("Habit successfully created with id: " + responseJson.id);
     })
     .catch((error) => {
       console.error(error);

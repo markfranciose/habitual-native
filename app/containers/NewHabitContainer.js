@@ -25,7 +25,7 @@ let positiveResponse = new NotificationAction({
   })
   .then((response) => response.json())
   .then((responseJson) => {
-    console.log("Reminder successfully created with id: " + responseJson.id);
+    // console.log("Reminder successfully created with id: " + responseJson.id);
   })
   completed();
 });
@@ -49,7 +49,7 @@ let negativeResponse = new NotificationAction({
   })
   .then((response) => response.json())
   .then((responseJson) => {
-    console.log("Reminder successfully created with id: " + responseJson.id);
+    // console.log("Reminder successfully created with id: " + responseJson.id);
   })
   completed();
 });
@@ -70,7 +70,7 @@ export default class NewHabitContainer extends Component {
     NotificationsIOS.requestPermissions([reminderResponses]);
     PushNotificationIOS.requestPermissions();
     NotificationsIOS.consumeBackgroundQueue();
-    PushNotificationIOS.cancelLocalNotifications();
+    // PushNotificationIOS.cancelLocalNotifications();
     this.state = {
       habitName: null,
       startTime: null,
@@ -102,11 +102,11 @@ export default class NewHabitContainer extends Component {
       PushNotificationIOS.scheduleLocalNotification({
         fireDate: habitTime,
         alertBody: habitName,
-        repeatInterval: "minute",
+        repeatInterval: "day",
         category: "REMINDER_RESPONSES",
         userInfo: { habitID: responseJson.id },
       })
-      console.log("Habit successfully created with id: " + responseJson.id);
+      // console.log("Habit successfully created with id: " + responseJson.id);
     })
     .catch((error) => {
       console.error(error);

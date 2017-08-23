@@ -208,7 +208,14 @@ export const Show =
 
 export const ReminderStyle = StyleSheet.create({
   container: {
-    marginBottom: 8,
+    backgroundColor: "white",
+    shadowColor: 'black',
+    shadowOffset: { width: 5, height: 3 },
+    shadowOpacity: 0.125,
+    shadowRadius: 2,
+    marginBottom: 15,
+    padding: 5,
+    width: '80%',
   },
   answer: {
     fontSize: 20
@@ -217,5 +224,7 @@ export const ReminderStyle = StyleSheet.create({
     fontSize: 10
   }
 });
+
+export const
 
 export default General;

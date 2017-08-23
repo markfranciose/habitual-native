@@ -234,6 +234,11 @@ export const ButtonStyles = StyleSheet.create({
     shadowOpacity: .2,
     shadowRadius: 2,
   },
+  addButton: {
+    width: 240,
+    height: 75,
+    backgroundColor: '#F9AA3A'
+  },
   habitButton: {
     backgroundColor: '#358797'
   },

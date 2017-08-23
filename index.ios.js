@@ -54,13 +54,15 @@ export default class HomeScreen extends Component {
         <View style={Home.viewTitle}>
           <Text style={Home.appTitle}>Habitual</Text>
         </View>
-        <View style={Home.viewButton}>
+
+        <View style={ ButtonStyles.container }>
           <TouchableOpacity onPress={() => navigate('NewHab')}>
-            <View style={Home.createHabitB}>
-              <Text style={Home.createHabitT}>Add a Habit</Text>
+            <View style={ [ButtonStyles.button, ButtonStyles.addButton ] }>
+              <Text style={ ButtonStyles.text }>Add a Habit</Text>
             </View>
           </TouchableOpacity>
         </View>
+
         <View style={Home.viewList}>
           <View style={Home.habitContainer}>
             <Text style={Home.habitsLabel}>Current Habits</Text>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Modal, Text, TouchableHighlight, TouchableOpacity, View, Button } from 'react-native';
-import { Home } from '../containers/ContainerStyles';
+import { Home, ButtonStyles } from '../containers/ContainerStyles';
 
 export default class DeleteModal extends Component {
 
@@ -41,10 +41,12 @@ export default class DeleteModal extends Component {
          </View>
         </Modal>
 
-        <TouchableOpacity onPress={() => {this.setModalVisible(true)} }
-          style={Home.listButton} >
-          <Text style={Home.deleteText}>Delete</Text>
-        </TouchableOpacity>
+        <View style={ ButtonStyles.container }>
+          <TouchableOpacity onPress={() => {this.setModalVisible(true)} }
+            style={ [ ButtonStyles.button, ButtonStyles.deleteButton ] } >
+            <Text style={ ButtonStyles.text }>Delete</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     );
   }

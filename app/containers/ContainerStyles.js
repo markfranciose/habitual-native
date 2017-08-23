@@ -225,4 +225,38 @@ export const ReminderStyle = StyleSheet.create({
   }
 });
 
+export const ButtonStyles = StyleSheet.create({
+  container: {
+    alignItems: "center",
+    marginBottom: 10
+  },
+  button: {
+    backgroundColor: 'white',
+    width: 200,
+    height: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    shadowColor: 'black',
+    shadowOffset: { width: 5, height: 3 },
+    shadowOpacity: .2,
+    shadowRadius: 2,
+  },
+  addButton: {
+    width: 240,
+    height: 75,
+    backgroundColor: '#F9AA3A'
+  },
+  habitButton: {
+    backgroundColor: '#358797'
+  },
+  deleteButton: {
+    backgroundColor: '#D1293F'
+  },
+  text: {
+    color: 'white',
+    fontSize: 20,
+    fontWeight: '700',
+  }
+});
+
 export default General;

@@ -3,8 +3,8 @@ import { ActivityIndicator, ListView, Text, View, Image, StatusBar } from 'react
 import Reminder from './ReminderContainer';
 import DarkTheme from '../components/StatusBarStyles'
 import DeleteModal from '../components/DeleteModal'
+import StatisticsModal from '../components/StatisticsModal'
 import { Show, Home } from './ContainerStyles';
-
 
 export default class HabitView extends Component {
   constructor(props) {
@@ -12,9 +12,9 @@ export default class HabitView extends Component {
     console.log(props);
     this.state = {
       habitId: this.props.navigation.state.params.id,
+      habitName: this.props.navigation.state.params.name,
       isLoading: true,
       habitStats: '',
-      habitName: this.props.navigation.state.params.name
     }
   }
 
@@ -25,28 +25,42 @@ export default class HabitView extends Component {
   });
 
   componentWillMount() {
+    // return fetch('https://habitualdb.herokuapp.com/users/12345/habits/'+ this.state.habitId)
     return fetch('https://habitualdb.herokuapp.com/users/12345/habits/'+ this.state.habitId)
-      .then((response) => response.json())
-      .then((responseJson) => {
-        let ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-        this.setState({
-          habitName: responseJson.name,
-          habitStats: responseJson.stats,
-          isLoading: false,
-          dataSource: ds.cloneWithRows(responseJson.reminders),
-        });
-      })
-      .catch((error) => {
-        console.error(error);
+    .then((response) => response.json())
+    .then((responseJson) => {
+      let ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+      console.log(responseJson)
+      this.setState({
+        habitName: responseJson.name,
+        habitStats: responseJson.stats,
+        pieChart: responseJson.stats.pieChart,
+        isLoading: false,
+        dataSource: ds.cloneWithRows(responseJson.reminders),
       });
+    })
+    .catch((error) => {
+      console.error(error);
+    });
   }
+
+/**
+Old
+<View style={Show.statistics} >
+  <Text>You have had this habit for: __days</Text>
+  <Text>Total Reminders: {totalReminders}{"\n"}</Text>
+  <Text>Times you did it: {"\t"}{"\t"}{didHabit}{"\t"} {(percentYes * 100).toFixed(2)}% </Text>
+  <Text>Times you missed it: {"\t"}{notDidHabit}{"\t"} {percentNo}%</Text>
+</View>
+**/
 
   render() {
     let totalReminders = this.state.habitStats.totalReminders
     let didHabit = this.state.habitStats.yesReminders
-    let notDidHabit = totalReminders - didHabit
-    let percentYes = this.state.habitStats.percentageAccepted
-    let percentNo = ((1 - percentYes) * 100).toFixed(2)
+    let missedHabit = totalReminders - didHabit
+    // let percentYes = this.state.pieChart..percentageAccepted
+    // let percentNo = (100 - percentYes)
+    // let percentNo = ((1 - percentYes) * 100).toFixed(2)
 
     if (this.state.isLoading) {
       return (
@@ -59,14 +73,13 @@ export default class HabitView extends Component {
     return (
       <View style={Show.containerStyle}>
         <DarkTheme />
-
-        <View style={Show.statistics} >
-          <Text>You have had this habit for: __days</Text>
-          <Text>Total Reminders: {totalReminders}{"\n"}</Text>
-          <Text>Times you did it: {"\t"}{"\t"}{didHabit}{"\t"} {(percentYes * 100).toFixed(2)}% </Text>
-          <Text>Times you missed it: {"\t"}{notDidHabit}{"\t"} {percentNo}%</Text>
+        <View>
+          <StatisticsModal
+            id={this.state.habitId}
+            name={this.state.habitName}
+            habitStats={this.state.pieChart}
+          />
         </View>
-
         <View>
           <DeleteModal id={this.state.habitId}/>
         </View>

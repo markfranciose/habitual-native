@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import { AppRegistry, View, TextInput, TouchableOpacity, Text, StyleSheet, PushNotificationIOS } from 'react-native';
 import TimePicker from 'react-native-modal-datetime-picker';
 import { NewHabit } from './ContainerStyles';
-import RandomHabit from './RandomHabit'
 import NotificationsIOS, { NotificationAction, NotificationCategory } from 'react-native-notifications';
 
 var moment = require('moment');
@@ -77,9 +76,7 @@ export default class NewHabitContainer extends Component {
       startTime: null,
       isTimePickerVisible: false,
       isTimeChosen: false,
-      validInput: false,
-      dailyVisible: true,
-      randomVisible: false,
+      validInput: false
     };
   }
 
@@ -116,6 +113,46 @@ export default class NewHabitContainer extends Component {
     });
   }
 
+  _submitForm2 = () => {
+    let habitName = this.state.habitName;
+    let habitTime = this.state.startTime;
+    return fetch('http://localhost:3000/users/12345/habits', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        habit: {
+          name: habitName,
+          reminder_frequency: 400,
+          reminder_time: habitTime,
+          end_time: "2017-08-24T21:59:41.971Z"
+        }
+      })
+    })
+    .then((response) => response.json())
+    .then((responseJson) => {
+      responseJson.array.map((item, i) => PushNotificationIOS.scheduleLocalNotification({
+        fireDate: item,
+        alertBody: "Will this work???",
+        repeatInterval: "day",
+        category: "REMINDER_RESPONSES",
+        userInfo: { habitID: responseJson.id },
+      }))
+      // PushNotificationIOS.scheduleLocalNotification({
+      //   fireDate: habitTime,
+      //   alertBody: habitName,
+      //   repeatInterval: "day",
+      //   category: "REMINDER_RESPONSES",
+      //   userInfo: { habitID: responseJson.id },
+      // })
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+  }
+
   _checkValidInput = () => {
     if (this.state.isTimeChosen && this.state.habitName) {
 
@@ -123,8 +160,6 @@ export default class NewHabitContainer extends Component {
   };
 
   _toggleTimePicker = () => this.setState({isTimePickerVisible: !this.state.isTimePickerVisible});
-  _showDaily = () => this.setState({dailyVisible: true, randomVisible: false})
-  _showRandom = () => this.setState({dailyVisible: false, randomVisible: true})
 
   _handleTimePicked = (time) => {
     this._checkValidInput;
@@ -139,14 +174,6 @@ export default class NewHabitContainer extends Component {
     return (
       <View style={NewHabit.newHabitView}>
         <Text style={NewHabit.label}>New Reminder</Text>
-
-        <View style={{flexDirection: 'row'}}>
-          <TouchableOpacity style={NewHabit.lilbutton} onPress={this._showRandom}><Text style={NewHabit.buttonText}>Random Mode</Text></TouchableOpacity>
-          <TouchableOpacity style={NewHabit.lilbutton} onPress={this._showDaily}><Text style={NewHabit.buttonText}>Daily Mode</Text></TouchableOpacity>
-        </View>
-        {this.state.randomVisible && <RandomHabit/>}
-
-       { this.state.dailyVisible && <View >
         <TextInput
           style={NewHabit.inputBox}
           placeholder="Name"
@@ -165,12 +192,11 @@ export default class NewHabitContainer extends Component {
           onCancel={this._toggleTimePicker} />
         <TouchableOpacity
           isVisible={this.state.validInput}
-          onPress={this._submitForm}>
+          onPress={this._submitForm2}>
           <View style={NewHabit.button}>
             <Text style={NewHabit.buttonText}>Submit</Text>
           </View>
         </TouchableOpacity>
-        </View> }
       </View>
     );
   }

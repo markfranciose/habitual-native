@@ -1135,7 +1135,7 @@
 				DEAD_CODE_STRIPPING = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/node_modules/react-native/Libraries/PushNotificationIOS/**",
-					"$(SRCROOT)/../node_modules/react-native-push-notifications/RNNotifications/**",
+					"$(SRCROOT)/../node_modules/react-native-notifications/RNNotifications/**",
 				);
 				INFOPLIST_FILE = HabitualFrontEndRN/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1156,7 +1156,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/node_modules/react-native/Libraries/PushNotificationIOS/**",
-					"$(SRCROOT)/../node_modules/react-native-push-notifications/RNNotifications/**",
+					"$(SRCROOT)/../node_modules/react-native-notifications/RNNotifications/**",
 				);
 				INFOPLIST_FILE = HabitualFrontEndRN/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

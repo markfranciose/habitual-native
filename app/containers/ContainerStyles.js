@@ -83,9 +83,10 @@ export const Home =
       width: 240,
       alignItems: 'center',
       backgroundColor: '#F9AA3A',
-      // borderWidth: 4,
-      // borderColor: 'white',
-      borderRadius: 10,
+      shadowColor: 'black',
+      shadowOffset: { width: 5, height: 3 },
+      shadowOpacity: .125,
+      shadowRadius: 2,
     },
     createHabitT: {
       padding: 20,
@@ -101,6 +102,7 @@ export const Home =
     },
     listButton: {
       alignItems: 'center',
+      borderRadius: 0,
     },
     listText: {
       fontSize: 18,
@@ -110,9 +112,6 @@ export const Home =
       backgroundColor: '#358797',
       width: 200,
       overflow: 'hidden',
-      borderColor: '#47b1c6',
-      borderWidth: 1,
-      borderRadius: 10,
       padding: 14,
       marginTop: 20,
     },
@@ -125,10 +124,12 @@ export const Home =
       width: 200,
       overflow: 'hidden',
       borderColor: '#47b1c6',
-      borderWidth: 1,
-      borderRadius: 10,
       padding: 14,
       marginTop: 20,
+      shadowColor: 'black',
+      shadowOffset: { width: 5, height: 3 },
+      shadowOpacity: .125,
+      shadowRadius: 2,
     },
     habitsLabel: {
       // flex: 1,
@@ -146,8 +147,7 @@ export const Home =
       fontWeight: '600'
     },
     flatList: {
-      // flex: 6,
-      // width: 240,
+      paddingTop: 10,
       backgroundColor: '#2A5F6D',
       paddingBottom: 200
     },
@@ -209,6 +209,8 @@ export const ReminderStyle = StyleSheet.create({
     marginBottom: 15,
     padding: 5,
     width: '80%',
+    borderLeftColor: '#358797',
+    borderLeftWidth: 3
   },
   answer: {
     fontSize: 20
@@ -218,6 +220,33 @@ export const ReminderStyle = StyleSheet.create({
   }
 });
 
-export const
+export const ButtonStyles = StyleSheet.create({
+  container: {
+    alignItems: "center",
+    marginBottom: 10
+  },
+  button: {
+    backgroundColor: 'white',
+    width: 200,
+    height: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    shadowColor: 'black',
+    shadowOffset: { width: 5, height: 3 },
+    shadowOpacity: .2,
+    shadowRadius: 2,
+  },
+  habitButton: {
+    backgroundColor: '#358797'
+  },
+  deleteButton: {
+    backgroundColor: '#D1293F'
+  },
+  text: {
+    color: 'white',
+    fontSize: 20,
+    fontWeight: '700',
+  }
+})
 
 export default General;

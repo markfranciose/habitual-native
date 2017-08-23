@@ -21,7 +21,8 @@ export default class NewHabitContainer extends Component {
       PickerTwoVis: false,
       isTimeChosen: false,
       isTime2Chosen: false,
-      ShowInput: false
+      ShowInput: false,
+      visible: false,
       //validInput: false
     };
   }
@@ -30,7 +31,7 @@ export default class NewHabitContainer extends Component {
     let habitName = this.state.habitName;
     let startTime = this.state.startTime;
     let endTime = this.state.endTime
-    return fetch('http://localhost:3000/users', {
+    return fetch('http://localhost:3000/test', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -55,9 +56,10 @@ export default class NewHabitContainer extends Component {
 
   _toggleTimePicker = () => this.setState({isTimePickerVisible: !this.state.isTimePickerVisible});
   _toggleTimePicker2 = () => this.setState({PickerTwoVis: !this.state.PickerTwoVis});
+  hideThings = () => this.setState({visible: !this.state.visible})
 
   _handleTimePicked = (time) => {
-    this._checkValidInput;
+    // this._checkValidInput;
     this.setState({
       isTimePickerVisible: !this.state.isTimePickerVisible,
       isTimeChosen: true,
@@ -66,9 +68,9 @@ export default class NewHabitContainer extends Component {
   };
 
   _handleTimePicked2 = (time) => {
-    this._checkValidInput;
+    //this._checkValidInput;
     this.setState({
-      PickerTwoVis: !this.state.isTimePickerVisible,
+      PickerTwoVis: !this.state.PickerTwoVis,
       isTime2Chosen: true,
       endTime: time
     });
@@ -76,7 +78,13 @@ export default class NewHabitContainer extends Component {
 
   render() {
     return (
-      <KeyboardAvoidingView style={styles.newHabitView} keyboardVerticalOffset={1}>
+      <View style={{flex: 1}}>
+      <View style={{height: 50, backgroundColor: 'blue'}}>
+      <TouchableOpacity onPress={this.hideThings}><Text>Random Mode</Text></TouchableOpacity>
+      <TouchableOpacity onPress={this.hideThings}><Text>Daily Mode</Text></TouchableOpacity></View>
+      { this.state.visible && <KeyboardAvoidingView style={styles.newHabitView} keyboardVerticalOffset={1}>
+
+
         <Text style={styles.label}>New Habit</Text>
         <TextInput
           style={styles.inputBox}
@@ -91,7 +99,7 @@ export default class NewHabitContainer extends Component {
         </TouchableOpacity>
         <TouchableOpacity onPress={this._toggleTimePicker2}>
           <View style={styles.button}>
-            <Text style={styles.buttonText}>{this.state.isTime2Chosen ? moment(this.state.startTime).format('h:mm a') : "End Time"}</Text>
+            <Text style={styles.buttonText}>{this.state.isTime2Chosen ? moment(this.state.endTime).format('h:mm a') : "End Time"}</Text>
           </View>
         </TouchableOpacity>
         <TimePicker
@@ -123,7 +131,10 @@ export default class NewHabitContainer extends Component {
             <Text style={styles.buttonText}>Submit</Text>
           </View>
         </TouchableOpacity>
-      </KeyboardAvoidingView>
+      </KeyboardAvoidingView> }
+      <View>
+      </View>
+      </View>
     );
   }
 }

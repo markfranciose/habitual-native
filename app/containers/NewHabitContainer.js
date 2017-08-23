@@ -8,25 +8,49 @@ var moment = require('moment');
 
 let positiveResponse = new NotificationAction({
   activationMode: "background",
-  title: String.fromCodePoint(0x1F44D),
+  title: "Yes! 👍",
   identifier: "YES_RESPONSE"
 }, (action, completed) => {
   console.log("YES RECEIVED");
   console.log(JSON.stringify(action));
-
-  // You must call to completed(), otherwise the action will not be triggered
+  fetch('https://habitualdb.herokuapp.com/users/' + '12345' + '/habits/' + action.notification.getData().habitID + '/reminders', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        reminder: { answer: "yes"  }
+      })
+  })
+  .then((response) => response.json())
+  .then((responseJson) => {
+    console.log("Reminder successfully created with id: " + responseJson.id);
+  })
   completed();
 });
 
 let negativeResponse = new NotificationAction({
   activationMode: "background",
-  title: String.fromCodePoint(0x1F44D),
+  title: "No 😔",
   identifier: "NO_RESPONSE"
 }, (action, completed) => {
   console.log("NO RECEIVED");
   console.log(JSON.stringify(action));
-
-  // You must call to completed(), otherwise the action will not be triggered
+  fetch('https://habitualdb.herokuapp.com/users/' + '12345' + '/habits/' + action.notification.getData().habitID + '/reminders', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        reminder: { answer: "no"  }
+      })
+  })
+  .then((response) => response.json())
+  .then((responseJson) => {
+    console.log("Reminder successfully created with id: " + responseJson.id);
+  })
   completed();
 });
 
@@ -43,6 +67,10 @@ export default class NewHabitContainer extends Component {
 
   constructor(props) {
     super(props);
+    NotificationsIOS.requestPermissions([reminderResponses]);
+    PushNotificationIOS.requestPermissions();
+    NotificationsIOS.consumeBackgroundQueue();
+    PushNotificationIOS.cancelLocalNotifications();
     this.state = {
       habitName: null,
       startTime: null,
@@ -71,7 +99,14 @@ export default class NewHabitContainer extends Component {
     })
     .then((response) => response.json())
     .then((responseJson) => {
-      return responseJson;
+      PushNotificationIOS.scheduleLocalNotification({
+        fireDate: habitTime,
+        alertBody: habitName,
+        repeatInterval: "minute",
+        category: "REMINDER_RESPONSES",
+        userInfo: { habitID: responseJson.id },
+      })
+      console.log("Habit successfully created with id: " + responseJson.id);
     })
     .catch((error) => {
       console.error(error);

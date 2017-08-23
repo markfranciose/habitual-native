@@ -13,6 +13,7 @@
 #import <React/RCTRootView.h>
 
 #import <React/RCTPushNotificationManager.h>
+#import "RNNotifications.h"
 
 @implementation AppDelegate
 

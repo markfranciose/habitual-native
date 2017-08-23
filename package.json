@@ -16,6 +16,7 @@
 		"react-native-cli": "^2.0.1",
 		"react-native-device-info": "^0.11.0",
 		"react-native-modal-datetime-picker": "^4.9.0",
+		"react-native-notifications": "^1.1.15",
 		"react-navigation": "^1.0.0-beta.11",
 		"watchman": "^0.1.8"
 	},

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { AppRegistry, View, TextInput, TouchableOpacity, Text, StyleSheet, Switch, KeyboardAvoidingView } from 'react-native';
+import { AppRegistry, View, TextInput, TouchableOpacity, Text, StyleSheet, Switch } from 'react-native';
 import TimePicker from 'react-native-modal-datetime-picker';
 import styles from './ContainerStyles';
 
@@ -15,12 +15,8 @@ export default class NewHabitContainer extends Component {
     this.state = {
       habitName: null,
       startTime: null,
-      endTime: null,
-      ReminderNumber: null,
       isTimePickerVisible: false,
-      PickerTwoVis: false,
       isTimeChosen: false,
-      isTime2Chosen: false,
       ShowInput: false
       //validInput: false
     };
@@ -28,9 +24,8 @@ export default class NewHabitContainer extends Component {
 
   _submitForm = () => {
     let habitName = this.state.habitName;
-    let startTime = this.state.startTime;
-    let endTime = this.state.endTime
-    return fetch('http://localhost:3000/users', {
+    let habitTime = this.state.startTime;
+    return fetch('https://habitualdb.herokuapp.com/users/12345/habits', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -39,9 +34,8 @@ export default class NewHabitContainer extends Component {
       body: JSON.stringify({
         habit: {
           name: habitName,
-          reminder_frequency: this.state.ReminderNumber,
-          reminder_start_time: startTime,
-          reminder_end_time: endTime
+          reminder_frequency: 1,
+          reminder_time: habitTime
         }
       })
     })
@@ -54,7 +48,6 @@ export default class NewHabitContainer extends Component {
   // };
 
   _toggleTimePicker = () => this.setState({isTimePickerVisible: !this.state.isTimePickerVisible});
-  _toggleTimePicker2 = () => this.setState({PickerTwoVis: !this.state.PickerTwoVis});
 
   _handleTimePicked = (time) => {
     this._checkValidInput;
@@ -65,18 +58,9 @@ export default class NewHabitContainer extends Component {
     });
   };
 
-  _handleTimePicked2 = (time) => {
-    this._checkValidInput;
-    this.setState({
-      PickerTwoVis: !this.state.isTimePickerVisible,
-      isTime2Chosen: true,
-      endTime: time
-    });
-  };
-
   render() {
     return (
-      <KeyboardAvoidingView style={styles.newHabitView} keyboardVerticalOffset={1}>
+      <View style={styles.newHabitView}>
         <Text style={styles.label}>New Habit</Text>
         <TextInput
           style={styles.inputBox}
@@ -89,33 +73,20 @@ export default class NewHabitContainer extends Component {
             <Text style={styles.buttonText}>{this.state.isTimeChosen ? moment(this.state.startTime).format('h:mm a') : "Start Time"}</Text>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity onPress={this._toggleTimePicker2}>
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>{this.state.isTime2Chosen ? moment(this.state.startTime).format('h:mm a') : "End Time"}</Text>
-          </View>
-        </TouchableOpacity>
         <TimePicker
           isVisible={this.state.isTimePickerVisible}
           mode='time'
-          titleIOS='Choose a Start Time'
+          titleIOS='Choose a start Time'
           onConfirm={this._handleTimePicked}
           onCancel={this._toggleTimePicker}
         />
         <TimePicker
-          isVisible={this.state.PickerTwoVis}
+          isVisible={this.state.isTimePickerVisible}
           mode='time'
-          titleIOS='Choose an End Time'
-          onConfirm={this._handleTimePicked2}
-          onCancel={this._toggleTimePicker2}
+          titleIOS='Choose a Time'
+          onConfirm={this._handleTimePicked}
+          onCancel={this._toggleTimePicker}
         />
-        <TextInput
-          style={styles.inputBox}
-          keyboardType='numeric'
-          placeholder="Reminders per day"
-          onChangeText={(ReminderNumber) => this.setState({ReminderNumber})}
-          value={this.state.ReminderNumber}
-        />
-
         <TouchableOpacity
           isVisible={this.state.validInput}
           onPress={this._submitForm}>
@@ -123,7 +94,7 @@ export default class NewHabitContainer extends Component {
             <Text style={styles.buttonText}>Submit</Text>
           </View>
         </TouchableOpacity>
-      </KeyboardAvoidingView>
+      </View>
     );
   }
 }

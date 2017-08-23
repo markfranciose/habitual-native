@@ -54,7 +54,7 @@ class Pie extends React.Component {
 
   constructor(props: Props) {
     super(props);
-    this.state = { highlightedIndex: 0 };
+    this.state = { highlightedIndex: null };
     this._createPieChart = this._createPieChart.bind(this);
     this._value = this._value.bind(this);
     this._label = this._label.bind(this);

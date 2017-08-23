@@ -25,44 +25,19 @@ export default class StatisticsModal extends Component {
 
   constructor(props) {
     super(props);
+    console.log(this.props.habitStats)
     this.state = {
       habitId: this.props.id,
-      isLoading: true,
-      habitStats: this.props.habitStats
-      habitName: this.props.habitName
-      activeIndex: 0,
-      // spendingsPerYear: data.spendingsPerYear,
-      // replaced by data instantiated by fetch
+      habitStats: this.props.habitStats,
+      habitName: this.props.habitName,
+      activeIndex: null,
+      // spendingsPerYear: data.spendingsPerYear
     }
     this._onReminderItemSelected = this._onReminderItemSelected.bind(this);
   }
 
   _onReminderItemSelected(newIndex){
     this.setState({...this.state, activeIndex: newIndex});
-  }
-
-  componentWillMount(){
-    return fetch('https://habitualdb.herokuapp.com/users/12345/habits/'+ this.state.habitId)
-    .then((response) => response.json())
-    .then((responseJson) => {
-      this.setState({
-        habitName: responseJson.name,
-        habitStats: responseJson.stats,
-
-        isLoading: false,
-        // dataSource: ds.cloneWithRows(responseJson.reminders),
-      }, function() {
-        console.log(this.state.habitStats)
-        // do something with new state
-      });
-    })
-    .catch((error) => {
-      console.error(error);
-    });
-  }
-
-  setModalVisible(visible) {
-    this.setState({modalVisible: visible});
   }
 
   render() {
@@ -77,8 +52,8 @@ export default class StatisticsModal extends Component {
           colors={Theme.colors}
           width={width}
           height={height}
-          // data={this.state.habitStats} />
-          data={data.spendingsLastMonth} />
+          // data={data.spendingsLastMonth} />
+          data={this.state.habitStats} />
       </View>
     );
   }

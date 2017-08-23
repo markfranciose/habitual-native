@@ -12,7 +12,7 @@ export default class HabitView extends Component {
     console.log(props);
     this.state = {
       habitId: this.props.navigation.state.params.id,
-      habitName: this.props.navigation.state.params.name
+      habitName: this.props.navigation.state.params.name,
       isLoading: true,
       habitStats: '',
     }
@@ -25,6 +25,7 @@ export default class HabitView extends Component {
   });
 
   componentWillMount() {
+    // return fetch('https://habitualdb.herokuapp.com/users/12345/habits/'+ this.state.habitId)
     return fetch('https://habitualdb.herokuapp.com/users/12345/habits/'+ this.state.habitId)
     .then((response) => response.json())
     .then((responseJson) => {
@@ -32,7 +33,8 @@ export default class HabitView extends Component {
       console.log(responseJson)
       this.setState({
         habitName: responseJson.name,
-        pieChart: responseJson.pieChart,
+        habitStats: responseJson.stats,
+        pieChart: responseJson.stats.pieChart,
         isLoading: false,
         dataSource: ds.cloneWithRows(responseJson.reminders),
       });
@@ -74,6 +76,8 @@ Old
         <View>
           <StatisticsModal
             id={this.state.habitId}
+            name={this.state.habitName}
+            habitStats={this.state.pieChart}
           />
         </View>
         <View>

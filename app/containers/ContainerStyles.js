@@ -218,4 +218,6 @@ export const ReminderStyle = StyleSheet.create({
   }
 });
 
+export const
+
 export default General;

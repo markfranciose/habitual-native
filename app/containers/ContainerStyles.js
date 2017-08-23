@@ -9,7 +9,7 @@ export const General = StyleSheet.create({
 
 export const NewHabit = StyleSheet.create({
   newHabitView: {
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     alignItems: 'center',
     flex: 1
   },
@@ -19,21 +19,28 @@ export const NewHabit = StyleSheet.create({
     fontWeight: '600'
   },
   inputBox: {
-    marginTop: 20,
-    flex: .05,
+    marginTop: 10,
+    flex: .2,
     width: 240,
     fontWeight: '600',
     textAlign: 'center',
     borderColor: 'lightgray',
     borderWidth: 2,
     padding: 10,
-    borderRadius: 10
+    borderRadius: 10,
   },
   button: {
     marginTop: 20,
     width: 240,
     alignItems: 'center',
     backgroundColor: '#2A5F6D',
+    borderRadius: 10
+  },
+  lilbutton: {
+    margin: 20,
+    marginBottom: 8,
+    backgroundColor: '#2A5F6D',
+    width: 120,
     borderRadius: 10
   },
   buttonText: {

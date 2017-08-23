@@ -1,21 +1,76 @@
 import React, {Component} from 'react';
-import { AppRegistry, View, TextInput, TouchableOpacity, Text, StyleSheet } from 'react-native';
+import { AppRegistry, View, TextInput, TouchableOpacity, Text, StyleSheet, PushNotificationIOS } from 'react-native';
 import TimePicker from 'react-native-modal-datetime-picker';
 import { NewHabit } from './ContainerStyles';
+import NotificationsIOS, { NotificationAction, NotificationCategory } from 'react-native-notifications';
 
 var moment = require('moment');
+
+let positiveResponse = new NotificationAction({
+  activationMode: "background",
+  title: "Yes! 👍",
+  identifier: "YES_RESPONSE"
+}, (action, completed) => {
+  console.log("YES RECEIVED");
+  console.log(JSON.stringify(action));
+  fetch('https://habitualdb.herokuapp.com/users/' + '12345' + '/habits/' + action.notification.getData().habitID + '/reminders', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        reminder: { answer: "yes"  }
+      })
+  })
+  .then((response) => response.json())
+  .then((responseJson) => {
+    // console.log("Reminder successfully created with id: " + responseJson.id);
+  })
+  completed();
+});
+
+let negativeResponse = new NotificationAction({
+  activationMode: "background",
+  title: "No 😔",
+  identifier: "NO_RESPONSE"
+}, (action, completed) => {
+  console.log("NO RECEIVED");
+  console.log(JSON.stringify(action));
+  fetch('https://habitualdb.herokuapp.com/users/' + '12345' + '/habits/' + action.notification.getData().habitID + '/reminders', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        reminder: { answer: "no"  }
+      })
+  })
+  .then((response) => response.json())
+  .then((responseJson) => {
+    // console.log("Reminder successfully created with id: " + responseJson.id);
+  })
+  completed();
+});
+
+let reminderResponses = new NotificationCategory({
+  identifier: "REMINDER_RESPONSES",
+  actions: [positiveResponse, negativeResponse],
+  context: "default"
+});
 
 export default class NewHabitContainer extends Component {
    static navigationOptions = {
     title: "Grow Yoself",
   }
-  // make this a container - container is sorta like view, component is sort of like partial
-  // set state whenever text is updated, use fetch to make post
-  // touchable opacity button to send off creation
-  // front end validation
 
   constructor(props) {
     super(props);
+    NotificationsIOS.requestPermissions([reminderResponses]);
+    PushNotificationIOS.requestPermissions();
+    NotificationsIOS.consumeBackgroundQueue();
+    // PushNotificationIOS.cancelLocalNotifications();
     this.state = {
       habitName: null,
       startTime: null,
@@ -25,12 +80,7 @@ export default class NewHabitContainer extends Component {
     };
   }
 
-  // _showTimePicker = () => this.setState({isTimePickerVisible: true});
-  // _hideTimePicker = () => this.setState({isTimePickerVisible: false});
-
-
   _submitForm = () => {
-    // console.log('Yo@@@@@@@@@@@@@@');
     let habitName = this.state.habitName;
     let habitTime = this.state.startTime;
     return fetch('https://habitualdb.herokuapp.com/users/12345/habits', {
@@ -47,13 +97,20 @@ export default class NewHabitContainer extends Component {
         }
       })
     })
-    // .then((response) => response.json())
-    // .then((responseJson) => {
-    //   return responseJson.;
-    // })
-    // .catch((error) => {
-    //   console.error(error);
-    // });
+    .then((response) => response.json())
+    .then((responseJson) => {
+      PushNotificationIOS.scheduleLocalNotification({
+        fireDate: habitTime,
+        alertBody: habitName,
+        repeatInterval: "day",
+        category: "REMINDER_RESPONSES",
+        userInfo: { habitID: responseJson.id },
+      })
+      // console.log("Habit successfully created with id: " + responseJson.id);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
   }
 
   _checkValidInput = () => {
@@ -66,7 +123,6 @@ export default class NewHabitContainer extends Component {
 
   _handleTimePicked = (time) => {
     this._checkValidInput;
-    // console.log('A time has been picked: ', time);
     this.setState({
       isTimePickerVisible: !this.state.isTimePickerVisible,
       isTimeChosen: true,

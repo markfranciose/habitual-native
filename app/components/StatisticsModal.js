@@ -26,11 +26,10 @@ export default class StatisticsModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      modalVisible: false,
       habitId: this.props.id,
       isLoading: true,
-      habitStats: '',
-      habitName: "",
+      habitStats: this.props.habitStats
+      habitName: this.props.habitName
       activeIndex: 0,
       // spendingsPerYear: data.spendingsPerYear,
       // replaced by data instantiated by fetch
@@ -49,6 +48,7 @@ export default class StatisticsModal extends Component {
       this.setState({
         habitName: responseJson.name,
         habitStats: responseJson.stats,
+
         isLoading: false,
         // dataSource: ds.cloneWithRows(responseJson.reminders),
       }, function() {
@@ -68,36 +68,17 @@ export default class StatisticsModal extends Component {
   render() {
     const height = 200;
     const width = 500;
-
     return (
-      <View style={{marginTop: 22}}>
-        <Modal
-          animationType={"fade"}
-          transparent={false}
-          visible={this.state.modalVisible}
-          onRequestClose={() => {alert("Modal has been closed.")}}
-          >
-          <View style={{marginTop: 300}}>
-            <View>
-              <Pie
-                pieWidth={150}
-                pieHeight={150}
-                onItemSelected={this._onReminderItemSelected}
-                colors={Theme.colors}
-                width={width}
-                height={height}
-                // data={this.state.habitStats} />
-                data={data.spendingsLastMonth} />
-
-              <Button title="Close" onPress={() => {
-                this.setModalVisible(!this.state.modalVisible)
-              }}/>
-            </View>
-          </View>
-        </Modal>
-        <Button title="Open Modal" onPress={() => {
-          this.setModalVisible(true)
-        }}/>
+      <View>
+        <Pie
+          pieWidth={150}
+          pieHeight={150}
+          onItemSelected={this._onReminderItemSelected}
+          colors={Theme.colors}
+          width={width}
+          height={height}
+          // data={this.state.habitStats} />
+          data={data.spendingsLastMonth} />
       </View>
     );
   }

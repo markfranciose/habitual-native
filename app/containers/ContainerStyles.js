@@ -83,10 +83,9 @@ export const Home =
       width: 240,
       alignItems: 'center',
       backgroundColor: '#F9AA3A',
-      shadowColor: 'black',
-      shadowOffset: { width: 5, height: 3 },
-      shadowOpacity: .125,
-      shadowRadius: 2,
+      // borderWidth: 4,
+      // borderColor: 'white',
+      borderRadius: 10,
     },
     createHabitT: {
       padding: 20,
@@ -102,7 +101,6 @@ export const Home =
     },
     listButton: {
       alignItems: 'center',
-      borderRadius: 0,
     },
     listText: {
       fontSize: 18,
@@ -112,6 +110,9 @@ export const Home =
       backgroundColor: '#358797',
       width: 200,
       overflow: 'hidden',
+      borderColor: '#47b1c6',
+      borderWidth: 1,
+      borderRadius: 10,
       padding: 14,
       marginTop: 20,
     },
@@ -124,12 +125,10 @@ export const Home =
       width: 200,
       overflow: 'hidden',
       borderColor: '#47b1c6',
+      borderWidth: 1,
+      borderRadius: 10,
       padding: 14,
       marginTop: 20,
-      shadowColor: 'black',
-      shadowOffset: { width: 5, height: 3 },
-      shadowOpacity: .125,
-      shadowRadius: 2,
     },
     habitsLabel: {
       // flex: 1,
@@ -147,7 +146,8 @@ export const Home =
       fontWeight: '600'
     },
     flatList: {
-      paddingTop: 10,
+      // flex: 6,
+      // width: 240,
       backgroundColor: '#2A5F6D',
       paddingBottom: 200
     },
@@ -209,8 +209,6 @@ export const ReminderStyle = StyleSheet.create({
     marginBottom: 15,
     padding: 5,
     width: '80%',
-    borderLeftColor: '#358797',
-    borderLeftWidth: 3
   },
   answer: {
     fontSize: 20
@@ -247,6 +245,6 @@ export const ButtonStyles = StyleSheet.create({
     fontSize: 20,
     fontWeight: '700',
   }
-})
+});
 
 export default General;

@@ -3,7 +3,7 @@ import {Text, TouchableOpacity, View, Button, ActivityIndicator, StyleSheet, App
 import { StackNavigator } from 'react-navigation'
 import NewHabitContainer from './app/containers/NewHabitContainer'
 import HabitShow from './app/containers/HabitShow'
-import General, { Home } from './app/containers/ContainerStyles';
+import General, { Home, ButtonStyles } from './app/containers/ContainerStyles';
 //import DeviceInfo from 'react-native-device-info';
 
 var userIdentifier = '12345'
@@ -68,11 +68,13 @@ export default class HomeScreen extends Component {
               style={Home.flatList}
               data={this.state.habits}
               renderItem={({item}) =>
-                <TouchableOpacity
-                  onPress={()=> navigate('HabitShow', {id: item.id, name: item.name})}
-                  style={Home.listButton}>
-                  <Text style={Home.listText}>{item.name}</Text>
-                </TouchableOpacity>
+                <View style={ ButtonStyles.container }> 
+                  <TouchableOpacity
+                    onPress={()=> navigate('HabitShow', {id: item.id, name: item.name})}
+                    style={ [ ButtonStyles.button, ButtonStyles.habitButton ] }>
+                    <Text style={ ButtonStyles.text }>{item.name}</Text>
+                  </TouchableOpacity>
+                </View>
               }
             />
           </View>

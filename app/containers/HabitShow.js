@@ -3,12 +3,8 @@ import { ActivityIndicator, ListView, Text, View, Image, StatusBar } from 'react
 import Reminder from './ReminderContainer';
 import DarkTheme from '../components/StatusBarStyles'
 import DeleteModal from '../components/DeleteModal'
-<<<<<<< HEAD
 import StatisticsModal from '../components/StatisticsModal'
-=======
 import { Show, Home } from './ContainerStyles';
-
->>>>>>> master
 
 export default class HabitView extends Component {
   constructor(props) {

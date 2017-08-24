@@ -279,7 +279,7 @@ export const ButtonStyles = StyleSheet.create({
   addButton: {
     width: 240,
     height: 75,
-    backgroundColor: '#F9AA3A'
+    backgroundColor: '#F43f57'
   },
   habitButton: {
     backgroundColor: '#358797'

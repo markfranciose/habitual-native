@@ -216,6 +216,8 @@ export const Show =
         alignItems: 'center',
       },
       reminderCard: {
+        borderLeftWidth: 5,
+        borderLeftColor: 'pink',
         // textAlign: 'center',
       },
       deleteButton: {
@@ -249,14 +251,15 @@ export const ReminderStyle = StyleSheet.create({
     shadowOpacity: 0.125,
     shadowRadius: 2,
     marginBottom: 15,
+    borderLeftWidth: 5,
     padding: 5,
     width: '80%',
   },
   answer: {
-    fontSize: 20
+    fontSize: 20,
   },
   date: {
-    fontSize: 10
+    fontSize: 10,
   }
 });
 

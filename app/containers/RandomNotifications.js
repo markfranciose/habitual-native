@@ -99,7 +99,7 @@ export default class NewHabitContainer extends Component {
   _submitForm2 = () => {
     let habitName = this.state.habitName;
     let habitTime = this.state.startTime;
-    return fetch('http://localhost:3000/randoms', {
+    return fetch('https://habitualdb.herokuapp.com/random', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',

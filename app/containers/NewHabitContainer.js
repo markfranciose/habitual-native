@@ -146,7 +146,7 @@ export default class NewHabitContainer extends Component {
   render() {
     return (
       <View style={NewHabit.newHabitView}>
-        <Text style={NewHabit.label}>New Reminder</Text>
+        <Text style={NewHabit.label}>New Habit</Text>
 
         <View style={{flexDirection: "row"}}>
           <TouchableOpacity
@@ -169,7 +169,7 @@ export default class NewHabitContainer extends Component {
           value={this.state.habitName} />
         <TouchableOpacity onPress={this._toggleTimePicker}>
           <View style={NewHabit.button}>
-            <Text style={NewHabit.buttonText}>{this.state.isTimeChosen ? moment(this.state.startTime).format('h:mm a') : "Start Time"}</Text>
+            <Text style={NewHabit.buttonText}>{this.state.isTimeChosen ? moment(this.state.startTime).format('h:mm a') : "Reminder Time"}</Text>
           </View>
         </TouchableOpacity>
         <TimePicker

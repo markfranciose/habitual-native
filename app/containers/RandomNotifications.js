@@ -62,8 +62,8 @@ let negativeResponse = new NotificationAction({
   completed();
 });
 
-let reminderResponses2 = new NotificationCategory({
-  identifier: "REMINDER_RESPONSES2",
+let reminderResponses = new NotificationCategory({
+  identifier: "REMINDER_RESPONSES",
   actions: [positiveResponse, negativeResponse],
   context: "default"
 });
@@ -108,7 +108,7 @@ export default class NewHabitContainer extends Component {
       body: JSON.stringify({
         habit: {
           name: "What the hell>>>",
-          reminder_frequency: 20,
+          reminder_frequency: this.state.reminderNumber,
           reminder_time: habitTime,
           end_time: this.state.endTime
         }
@@ -120,9 +120,9 @@ export default class NewHabitContainer extends Component {
       responseJson.array.map((item, i) =>
       PushNotificationIOS.scheduleLocalNotification({
         fireDate: item,
-        alertBody: "Randomized Times, yo.",
+        alertBody: this.state.habitName,
         repeatInterval: "day",
-        category: "REMINDER_RESPONSES2",
+        category: "REMINDER_RESPONSES",
         userInfo: { habitID: responseJson.id },
       }))
       console.log("Habit successfully created with id: " + responseJson.id);
@@ -166,7 +166,7 @@ export default class NewHabitContainer extends Component {
       <View>
         <TextInput
           style={NewHabit.inputBox}
-          placeholder="Scrub Harder Becky."
+          placeholder="Habit"
           onChangeText={(habitName) => this.setState({habitName})}
           value={this.state.habitName} />
         <TextInput
@@ -184,7 +184,7 @@ export default class NewHabitContainer extends Component {
 
         <TouchableOpacity onPress={this._toggleTimePicker2}>
           <View style={NewHabit.button}>
-            <Text style={NewHabit.buttonText}>{this.state.isTime2Chosen ? moment(this.state.endTime).format('h:mm a') : "Start Time"}</Text>
+            <Text style={NewHabit.buttonText}>{this.state.isTime2Chosen ? moment(this.state.endTime).format('h:mm a') : "End"}</Text>
           </View>
         </TouchableOpacity>
 

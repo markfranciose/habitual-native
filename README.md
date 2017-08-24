@@ -1,4 +1,4 @@
-# Habit Builder - Front End [![Build Status](https://travis-ci.org/sanjaynelson/habitual.svg?branch=master)](https://travis-ci.org/sanjaynelson/habitual)
+# Habit Builder - Front End [![Build Status](https://travis-ci.org/sanjaynelson/habitual.svg?branch=master)](https://travis-ci.org/sanjaynelson/habitual) [![npm](https://img.shields.io/npm/v/react-native-smart-badge.svg)](https://www.npmjs.com/package/react-native-smart-badge)
 
 Welcome to the Habit Builder's front end repository.
 

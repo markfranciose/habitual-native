@@ -10,6 +10,8 @@ export default class HabitView extends Component {
   constructor(props) {
     super(props);
     console.log(props);
+    console.log(this.props.navigation);
+
     this.state = {
       habitId: this.props.navigation.state.params.id,
       habitName: this.props.navigation.state.params.name,
@@ -73,21 +75,28 @@ Old
     return (
       <View style={Show.containerStyle}>
         <DarkTheme />
-        <View>
+        <View style={Show.pieChartCard}>
           <StatisticsModal
             id={this.state.habitId}
             name={this.state.habitName}
             habitStats={this.state.pieChart}
           />
         </View>
-        <View>
-          <DeleteModal id={this.state.habitId}/>
-        </View>
 
         <View style={Show.reminders}>
           <Text style={Show.log}>Habit Log</Text>
-          <ListView dataSource={this.state.dataSource}
-            renderRow={(rowData) => <Reminder rowData={rowData} /> } />
+          <ListView
+            style={Show.listView}
+            contentContainerStyle={Show.listItems}
+            dataSource={this.state.dataSource}
+            renderRow={(rowData) => <Reminder
+              style={Show.reminderCard}
+              rowData={rowData} />
+            } />
+        </View>
+
+        <View style={Show.deleteButton}>
+          <DeleteModal id={this.state.habitId}/>
         </View>
       </View>
     );

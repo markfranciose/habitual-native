@@ -54,7 +54,7 @@ export const Home =
   StyleSheet.create({
     header: {
       // marginTop: 10,
-      backgroundColor: '#358797'
+      backgroundColor: '#2A5F6D'
     },
     headerTitle: {
       color: 'white',
@@ -68,16 +68,18 @@ export const Home =
       alignItems: 'center',
     },
     viewTitle: {
-      marginTop: 25,
+      // marginTop: 25,
       flex: 1,
+      alignItems: 'center',
       justifyContent: 'center',
     },
     viewButton: {
       flex: 1,
+      alignItems: 'center',
       justifyContent: 'center',
     },
     viewList: {
-      flex: 4,
+      flex: 3,
       flexDirection: 'row',
     },
     appTitle: {
@@ -184,9 +186,11 @@ export const Show =
   StyleSheet.create({
     containerStyle: {
         flex: 1,
-        padding: 10,
-        paddingTop: 20,
-        backgroundColor: '#EDEDED'
+        // padding: 10,
+        // paddingTop: 20,
+        backgroundColor: '#EDEDED',
+        alignItems: 'center',
+        // justifyContent: 'center'
       },
       habitTitle: {
         fontSize: 36,
@@ -196,13 +200,46 @@ export const Show =
         marginTop: 5
       },
       reminders: {
-        marginTop: 10
+        flex: 3,
+        backgroundColor: '#EDEDED',
+        // marginTop: 10,
+        // backgroundColor: 'white',
+        alignItems: 'center',
+        width: '100%',
+      },
+      listView: {
+        width: '100%',
+      },
+      listItems: {
+        padding: 5,
+        width: '100%',
+        alignItems: 'center',
+      },
+      reminderCard: {
+        borderLeftWidth: 5,
+        borderLeftColor: 'pink',
+        // textAlign: 'center',
       },
       deleteButton: {
-
+        alignItems: 'center',
+        justifyContent: 'center',
+        // paddingTop: 12,
+        flex: 1,
       },
       log: {
-        fontSize: 24
+        color: 'white',
+        width: '100%',
+        padding: 8,
+        marginBottom: 10,
+        textAlign: 'center',
+        backgroundColor: '#2A5F6D',
+        fontSize: 24,
+        fontWeight: '700',
+      },
+      pieChartCard: {
+        flex: 2,
+        width: '90%',
+        // backgroundColor: 'white',
       }
     });
 
@@ -214,14 +251,15 @@ export const ReminderStyle = StyleSheet.create({
     shadowOpacity: 0.125,
     shadowRadius: 2,
     marginBottom: 15,
+    borderLeftWidth: 5,
     padding: 5,
     width: '80%',
   },
   answer: {
-    fontSize: 20
+    fontSize: 20,
   },
   date: {
-    fontSize: 10
+    fontSize: 10,
   }
 });
 
@@ -244,7 +282,7 @@ export const ButtonStyles = StyleSheet.create({
   addButton: {
     width: 240,
     height: 75,
-    backgroundColor: '#F9AA3A'
+    backgroundColor: '#F43f57'
   },
   habitButton: {
     backgroundColor: '#358797'

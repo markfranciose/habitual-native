@@ -54,7 +54,10 @@ If there are errors with loading, in the root directory, reload npm by typing th
 *This application has been developed for Mac and iOS only.  Functionality on Android and Window/Linux-based systems is not guaranteed.*
 
 ## Future Features
-
+On reflection of the current state of the application and the completion of the 8 days, the next steps towards this application more market ready include:
+- Accessing habits through multiple devices
+- Enabling more flexibility with reminders and the displaying of statistics
+- A more thorough dive into data visualization through the D3.js and React-ART framework
 
 ## Contributors
 - Mark Franciose [@markfranciose](https://github.com/markfranciose)

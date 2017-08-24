@@ -71,7 +71,7 @@ let reminderResponses = new NotificationCategory({
 
 export default class NewHabitContainer extends Component {
    static navigationOptions = {
-    title: "Grow Yoself",
+    title: "Create a Habit",
   }
 
   constructor(props) {
@@ -146,27 +146,27 @@ export default class NewHabitContainer extends Component {
   render() {
     return (
       <View style={NewHabit.newHabitView}>
-        <Text style={NewHabit.label}>New Habit</Text>
 
+        <TextInput
+          style={NewHabit.inputBox}
+          placeholder="Habit Name"
+          onChangeText={(habitName) => this.setState({habitName})}
+          value={this.state.habitName} />
+        <Text style={NewHabit.label}>Reminder Mode</Text>
         <View style={{flexDirection: "row"}}>
           <TouchableOpacity
             style={NewHabit.lilbutton}
             onPress={this._showRandom}>
-            <Text style={NewHabit.buttonText}>Random Mode</Text>
+            <Text style={NewHabit.buttonText}>Random</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={NewHabit.lilbutton}
             onPress={this._showDaily}>
-            <Text style={NewHabit.buttonText}>Daily Mode</Text>
+            <Text style={NewHabit.buttonText}>Daily</Text>
           </TouchableOpacity>
         </View>
         {this.state.randomVisible && <RandomNotifications/>}
         {this.state.dailyVisible && <View>
-        <TextInput
-          style={NewHabit.inputBox}
-          placeholder="Name"
-          onChangeText={(habitName) => this.setState({habitName})}
-          value={this.state.habitName} />
         <TouchableOpacity onPress={this._toggleTimePicker}>
           <View style={NewHabit.button}>
             <Text style={NewHabit.buttonText}>{this.state.isTimeChosen ? moment(this.state.startTime).format('h:mm a') : "Reminder Time"}</Text>

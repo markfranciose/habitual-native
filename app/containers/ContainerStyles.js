@@ -15,36 +15,48 @@ export const NewHabit = StyleSheet.create({
   },
   label: {
     marginTop: 20,
-    fontSize: 24,
-    fontWeight: '600'
+    fontSize: 14,
+    color: 'gray',
+    fontWeight: '400',
+    width: 240,
+    textAlign: 'center',
+    padding: 8,
+    backgroundColor: 'lightgray',
   },
   inputBox: {
     marginTop: 20,
-    flex: .05,
+    flex: .08,
+    height: 25,
     width: 240,
     fontWeight: '600',
     textAlign: 'center',
     borderColor: 'lightgray',
+    backgroundColor: 'white',
     borderWidth: 2,
     padding: 10,
-    borderRadius: 10
+    // borderRadius: 10
   },
   button: {
     marginTop: 20,
     width: 240,
     alignItems: 'center',
     backgroundColor: '#2A5F6D',
-    borderRadius: 10
+    // borderRadius: 10
   },
   lilbutton: {
-    margin: 20,
-    marginBottom: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginHorizontal: 10,
+    marginTop: 20,
+    // marginBottom: 8,
     backgroundColor: '#2A5F6D',
-    width: 120,
-    borderRadius: 10
+    width: 110,
+    // borderRadius: 10
   },
   buttonText: {
+    textAlign: 'center',
     padding: 10,
+    fontSize: 14,
     fontWeight: '600',
     color: 'white'
   },
@@ -140,23 +152,16 @@ export const Home =
       marginTop: 20,
     },
     habitsLabel: {
-      // flex: 1,
-      // flexDirection: 'column',
       backgroundColor: '#358797',
       textAlign: 'center',
       borderColor: '#47b1c6',
-      // borderBottomColor: '#bbb',
-      // borderBottomWidth: 4,
       borderWidth: 1,
-      // width: 240,
       padding: 10,
       color: 'white',
       fontSize: 24,
       fontWeight: '600'
     },
     flatList: {
-      // flex: 6,
-      // width: 240,
       backgroundColor: '#2A5F6D',
       paddingBottom: 200
     },

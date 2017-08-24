@@ -41,10 +41,14 @@ export default class StatisticsModal extends Component {
   }
 
   render() {
-    const height = 200;
-    const width = 500;
+    const height = 220;
+    const width = 340;
     return (
-      <View>
+      <View style={{
+        flex: 1,
+        width: '100%',
+        alignItems: 'center',
+      }}>
         <Pie
           pieWidth={150}
           pieHeight={150}

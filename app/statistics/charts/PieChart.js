@@ -100,14 +100,23 @@ class Pie extends React.Component {
     this.props.onItemSelected(index);
   }
 
+
   render() {
-    const margin = styles.container.margin;
+    const margin = styles.pieContainer.margin
     const x = this.props.pieWidth / 2 + margin;
     const y = this.props.pieHeight / 2 + margin;
 
     return (
-      <View width={this.props.width} height={this.props.height}>
-        <Surface width={this.props.width} height={this.props.height}>
+      <View
+        width={this.props.width}
+        height={this.props.height}
+        style={styles.habitView}
+      >
+        <Surface
+          width={this.props.width}
+          height={this.props.height}
+          style={styles.surface}
+        >
            <Group x={x} y={y}>
            {
               this.props.data.map( (item, index) =>
@@ -120,7 +129,16 @@ class Pie extends React.Component {
             }
            </Group>
         </Surface>
-        <View style={{position: 'absolute', top:margin, left: 2*margin + this.props.pieWidth}}>
+        <View style={{
+          flex: 1,
+          position: 'absolute',
+          // bottom:margin,
+          bottom: 0,
+          width: '100%',
+          // justifyContent: 'center',
+          backgroundColor: 'pink',
+          // left: 2*margin + this.props.pieWidth
+        }}>
           {
             this.props.data.map( (item, index) =>
             {
@@ -128,7 +146,7 @@ class Pie extends React.Component {
               return (
                 <TouchableWithoutFeedback key={index} onPress={() => this._onPieItemSelected(index)}>
                   <View>
-                    <Text style={[styles.label, {color: this._color(index), fontWeight: fontWeight}]}>{this._label(item)}: {this._value(item)}%</Text>
+                    <Text style={[styles.pieButtonLabel, {color: this._color(index), fontWeight: fontWeight}]}>{this._label(item)}: {this._value(item)}%</Text>
                   </View>
                 </TouchableWithoutFeedback>
               );
@@ -141,14 +159,26 @@ class Pie extends React.Component {
 }
 
 const styles = {
-  container: {
+  pieContainer: {
     margin: 20,
   },
-  label: {
+  habitView: {
+    backgroundColor: 'white',
+    // alignItems: 'center',
+  },
+  pieButtonLabel: {
     fontSize: 15,
     marginTop: 5,
     fontWeight: 'normal',
-  }
+  },
+  surface: {
+    alignItems: 'center',
+    shadowColor: 'black',
+    shadowOffset: { width: 5, height: 3 },
+    shadowOpacity: .2,
+    shadowRadius: 2,
+  },
+
 };
 
 export default Pie;

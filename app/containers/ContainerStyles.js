@@ -179,7 +179,9 @@ export const Show =
         flex: 1,
         padding: 10,
         paddingTop: 20,
-        backgroundColor: '#EDEDED'
+        backgroundColor: '#EDEDED',
+        alignItems: 'center',
+        // justifyContent: 'center'
       },
       habitTitle: {
         fontSize: 36,
@@ -189,13 +191,39 @@ export const Show =
         marginTop: 5
       },
       reminders: {
-        marginTop: 10
+        flex: 3,
+        // marginTop: 10,
+        // backgroundColor: 'green',
+        alignItems: 'center',
+        width: '100%',
+      },
+      listView: {
+        width: '100%',
+      },
+      listItems: {
+        padding: 5,
+        width: '100%',
+        alignItems: 'center',
+      },
+      reminderCard: {
+        // textAlign: 'center',
       },
       deleteButton: {
-
+        flex: 1,
       },
       log: {
-        fontSize: 24
+        width: '100%',
+        padding: 5,
+        marginBottom: 10,
+        textAlign: 'center',
+        // backgroundColor: 'pink',
+        fontSize: 24,
+        fontWeight: '700',
+      },
+      pieChartCard: {
+        flex: 3,
+        width: '90%',
+        // backgroundColor: 'white',
       }
     });
 

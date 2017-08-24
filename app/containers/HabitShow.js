@@ -73,21 +73,27 @@ Old
     return (
       <View style={Show.containerStyle}>
         <DarkTheme />
-        <View>
+        <View style={Show.pieChartCard}>
           <StatisticsModal
             id={this.state.habitId}
             name={this.state.habitName}
             habitStats={this.state.pieChart}
           />
         </View>
-        <View>
+        <View style={Show.deleteButton}>
           <DeleteModal id={this.state.habitId}/>
         </View>
 
         <View style={Show.reminders}>
           <Text style={Show.log}>Habit Log</Text>
-          <ListView dataSource={this.state.dataSource}
-            renderRow={(rowData) => <Reminder rowData={rowData} /> } />
+          <ListView
+            style={Show.listView}
+            contentContainerStyle={Show.listItems}
+            dataSource={this.state.dataSource}
+            renderRow={(rowData) => <Reminder
+              style={Show.reminderCard}
+              rowData={rowData} />
+            } />
         </View>
       </View>
     );

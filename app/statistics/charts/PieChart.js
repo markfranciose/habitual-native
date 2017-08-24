@@ -117,7 +117,7 @@ class Pie extends React.Component {
           height={this.props.height}
           style={styles.surface}
         >
-           <Group x={x} y={y}>
+           <Group x={x} y={y} style={{alignItems: 'center'}}>
            {
               this.props.data.map( (item, index) =>
               (<AnimShape
@@ -133,11 +133,11 @@ class Pie extends React.Component {
           flex: 1,
           position: 'absolute',
           // bottom:margin,
-          bottom: 0,
+          top: margin * 1.5,
           width: '100%',
           // justifyContent: 'center',
-          backgroundColor: 'pink',
-          // left: 2*margin + this.props.pieWidth
+          // backgroundColor: 'pink',
+          left: 2.75*margin + this.props.pieWidth
         }}>
           {
             this.props.data.map( (item, index) =>
@@ -146,7 +146,7 @@ class Pie extends React.Component {
               return (
                 <TouchableWithoutFeedback key={index} onPress={() => this._onPieItemSelected(index)}>
                   <View>
-                    <Text style={[styles.pieButtonLabel, {color: this._color(index), fontWeight: fontWeight}]}>{this._label(item)}: {this._value(item)}%</Text>
+                    <Text style={[styles.pieButtonLabel, {backgroundColor: this._color(index), fontWeight: fontWeight}]}>{this._label(item)}: {this._value(item)}%</Text>
                   </View>
                 </TouchableWithoutFeedback>
               );
@@ -167,9 +167,12 @@ const styles = {
     // alignItems: 'center',
   },
   pieButtonLabel: {
-    fontSize: 15,
-    marginTop: 5,
-    fontWeight: 'normal',
+    margin: 6,
+    padding: 8,
+    color: 'white',
+    fontSize: 18,
+    width: '35%',
+    fontWeight: '700',
   },
   surface: {
     alignItems: 'center',

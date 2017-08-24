@@ -41,7 +41,7 @@ export default class StatisticsModal extends Component {
   }
 
   render() {
-    const height = 220;
+    const height = 160;
     const width = 340;
     return (
       <View style={{
@@ -50,8 +50,8 @@ export default class StatisticsModal extends Component {
         alignItems: 'center',
       }}>
         <Pie
-          pieWidth={150}
-          pieHeight={150}
+          pieWidth={120}
+          pieHeight={120}
           onItemSelected={this._onReminderItemSelected}
           colors={Theme.colors}
           width={width}

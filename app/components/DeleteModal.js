@@ -44,7 +44,7 @@ export default class DeleteModal extends Component {
         <View style={ ButtonStyles.container }>
           <TouchableOpacity onPress={() => {this.setModalVisible(true)} }
             style={ [ ButtonStyles.button, ButtonStyles.deleteButton ] } >
-            <Text style={ ButtonStyles.text }>Delete</Text>
+            <Text style={ ButtonStyles.text }>Delete Habit</Text>
           </TouchableOpacity>
         </View>
       </View>

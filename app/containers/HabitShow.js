@@ -80,9 +80,6 @@ Old
             habitStats={this.state.pieChart}
           />
         </View>
-        <View style={Show.deleteButton}>
-          <DeleteModal id={this.state.habitId}/>
-        </View>
 
         <View style={Show.reminders}>
           <Text style={Show.log}>Habit Log</Text>
@@ -94,6 +91,10 @@ Old
               style={Show.reminderCard}
               rowData={rowData} />
             } />
+        </View>
+
+        <View style={Show.deleteButton}>
+          <DeleteModal id={this.state.habitId}/>
         </View>
       </View>
     );

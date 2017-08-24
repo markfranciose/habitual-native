@@ -47,7 +47,7 @@ export const Home =
   StyleSheet.create({
     header: {
       // marginTop: 10,
-      backgroundColor: '#358797'
+      backgroundColor: '#2A5F6D'
     },
     headerTitle: {
       color: 'white',
@@ -61,16 +61,18 @@ export const Home =
       alignItems: 'center',
     },
     viewTitle: {
-      marginTop: 25,
+      // marginTop: 25,
       flex: 1,
+      alignItems: 'center',
       justifyContent: 'center',
     },
     viewButton: {
       flex: 1,
+      alignItems: 'center',
       justifyContent: 'center',
     },
     viewList: {
-      flex: 4,
+      flex: 3,
       flexDirection: 'row',
     },
     appTitle: {
@@ -177,8 +179,8 @@ export const Show =
   StyleSheet.create({
     containerStyle: {
         flex: 1,
-        padding: 10,
-        paddingTop: 20,
+        // padding: 10,
+        // paddingTop: 20,
         backgroundColor: '#EDEDED',
         alignItems: 'center',
         // justifyContent: 'center'
@@ -192,8 +194,9 @@ export const Show =
       },
       reminders: {
         flex: 3,
+        backgroundColor: '#EDEDED',
         // marginTop: 10,
-        // backgroundColor: 'green',
+        // backgroundColor: 'white',
         alignItems: 'center',
         width: '100%',
       },
@@ -209,19 +212,23 @@ export const Show =
         // textAlign: 'center',
       },
       deleteButton: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        // paddingTop: 12,
         flex: 1,
       },
       log: {
+        color: 'white',
         width: '100%',
-        padding: 5,
+        padding: 8,
         marginBottom: 10,
         textAlign: 'center',
-        // backgroundColor: 'pink',
+        backgroundColor: '#2A5F6D',
         fontSize: 24,
         fontWeight: '700',
       },
       pieChartCard: {
-        flex: 3,
+        flex: 2,
         width: '90%',
         // backgroundColor: 'white',
       }

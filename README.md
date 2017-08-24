@@ -51,7 +51,7 @@ If there are errors with loading, in the root directory, reload npm by typing th
 The Habitual app is the idea of Mark Franciose who remembers telling a fellow colleage that habit change was more or less impossible.  On reflection of that piece of mis-placed advice, a team was assembled under Mark's vision to make habit change not only possible, but enjoyable and easy.  As part of the final project for DevBootcamp whose curriculum was mostly web-application based, the team decided to build this solution on the React-Native framework.  The group had 8 days to learn and build this application having no prior knowledge of mobile application development.  The information in this repository is a reflection of that work.
 
 ## Current State
-The Habitual application is a mobile solution to help users accomplish a longer-term goals through small and steady habit reminders and progress statistics.  A user can add or delete however many habits they wish and is reminded of that habit daily at the time of their choosing upon the creation of the habit.
+The Habitual application is a mobile solution with an API backend to help users accomplish a longer-term goals through small and steady habit reminders and progress statistics.  A user can add or delete however many habits they wish and is reminded of that habit daily at the time of their choosing upon the creation of the habit.
 
 ## Future Features
 On reflection of the current state of the application and the completion of the 8 days, the next steps towards this application more market ready include:

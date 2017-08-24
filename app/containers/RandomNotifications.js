@@ -99,7 +99,7 @@ export default class NewHabitContainer extends Component {
   _submitForm2 = () => {
     let habitName = this.state.habitName;
     let habitTime = this.state.startTime;
-    return fetch('https://habitualdb.herokuapp.com/random', {
+    return fetch('https://habitualdb.herokuapp.com/randoms', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -107,7 +107,7 @@ export default class NewHabitContainer extends Component {
       },
       body: JSON.stringify({
         habit: {
-          name: "What the hell>>>",
+          name: habitName,
           reminder_frequency: this.state.reminderNumber,
           reminder_time: habitTime,
           end_time: this.state.endTime

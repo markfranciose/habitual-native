@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/sanjaynelson/habitual.svg?branch=master)](https://travis-ci.org/sanjaynelson/habitual)
+
 # Habit Builder - Front End
 Welcome to the Habit Builder's front end repository.
 

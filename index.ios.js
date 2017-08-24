@@ -17,6 +17,7 @@ export default class HomeScreen extends Component {
   }
   constructor() {
     super();
+    console.disableYellowBox = true;
     this.state = {
       //device_id: DeviceInfo.getUniqueID(),
       isLoading: true,
@@ -70,7 +71,7 @@ export default class HomeScreen extends Component {
               style={Home.flatList}
               data={this.state.habits}
               renderItem={({item}) =>
-                <View style={ ButtonStyles.container }> 
+                <View style={ ButtonStyles.container }>
                   <TouchableOpacity
                     onPress={()=> navigate('HabitShow', {id: item.id, name: item.name})}
                     style={ [ ButtonStyles.button, ButtonStyles.habitButton ] }>

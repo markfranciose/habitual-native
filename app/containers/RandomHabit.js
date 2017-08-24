@@ -1,9 +1,65 @@
 import React, {Component} from 'react';
-import { AppRegistry, View, TextInput, TouchableOpacity, Text, StyleSheet, Switch } from 'react-native';
+import { AppRegistry, View, TextInput, TouchableOpacity, Text, StyleSheet, PushNotificationIOS } from 'react-native';
 import TimePicker from 'react-native-modal-datetime-picker';
 import { NewHabit } from './ContainerStyles';
+import NotificationsIOS, { NotificationAction, NotificationCategory } from 'react-native-notifications';
+import ModePicker from '../components/ModePicker'
 
 var moment = require('moment');
+
+let positiveResponse = new NotificationAction({
+  activationMode: "background",
+  title: "Yes!",
+  identifier: "YES_RESPONSE"
+}, (action, completed) => {
+  console.log("YES RECEIVED");
+  console.log(JSON.stringify(action));
+  fetch('https://habitualdb.herokuapp.com/users/' + '12345' + '/habits/' + action.notification.getData().habitID + '/reminders', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        reminder: { answer: "yes"  }
+      })
+  })
+  .then((response) => response.json())
+  .then((responseJson) => {
+    // console.log("Reminder successfully created with id: " + responseJson.id);
+  })
+  completed();
+});
+
+let negativeResponse = new NotificationAction({
+  activationMode: "background",
+  title: "No ",
+  identifier: "NO_RESPONSE"
+}, (action, completed) => {
+  console.log("NO RECEIVED");
+  console.log(JSON.stringify(action));
+  fetch('https://habitualdb.herokuapp.com/users/' + '12345' + '/habits/' + action.notification.getData().habitID + '/reminders', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        reminder: { answer: "no"  }
+      })
+  })
+  .then((response) => response.json())
+  .then((responseJson) => {
+    // console.log("Reminder successfully created with id: " + responseJson.id);
+  })
+  completed();
+});
+
+let reminderResponses = new NotificationCategory({
+  identifier: "REMINDER_RESPONSES",
+  actions: [positiveResponse, negativeResponse],
+  context: "default"
+});
 
 export default class RandomHabit extends Component {
    static navigationOptions = {
@@ -12,6 +68,9 @@ export default class RandomHabit extends Component {
 
   constructor(props) {
     super(props);
+    NotificationsIOS.requestPermissions([reminderResponses]);
+    PushNotificationIOS.requestPermissions();
+    NotificationsIOS.consumeBackgroundQueue();
     this.state = {
       habitName: null,
       startTime: null,
@@ -37,15 +96,26 @@ export default class RandomHabit extends Component {
         habit: {
           name: this.state.habitName,
           reminder_frequency: this.state.ReminderNumber,
-          reminder_start_time: this.state.startTime,
-          reminder_end_time: this.state.endTime
+          reminder_time: this.state.startTime,
+          end_time: this.state.endTime
         }
       })
+    })
+    .then((response) => response.json())
+    .then((responseJson) => {
+      console.log(responseJson)
+      responseJson.array.map((item, i) => PushNotificationIOS.scheduleLocalNotification({
+        fireDate: item,
+        alertBody: "Will this work???",
+        repeatInterval: "day",
+        category: "REMINDER_RESPONSES",
+        userInfo: { habitID: responseJson.id },
+      }))
     })
   }
 
   _toggleTimePicker = () => this.setState({isTimePickerVisible: !this.state.isTimePickerVisible});
-    _toggleTimePicker2 = () => this.setState({PickerTwoVis: !this.state.PickerTwoVis});
+  _toggleTimePicker2 = () => this.setState({PickerTwoVis: !this.state.PickerTwoVis});
 
   _handleTimePicked = (time) => {
     this.setState({

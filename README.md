@@ -1,4 +1,4 @@
-# Habit Builder - Front End [![Build Status](https://travis-ci.org/sanjaynelson/habitual.svg?branch=master)](https://travis-ci.org/sanjaynelson/habitual) [![npm version](https://badge.fury.io/js/react-native.svg)](https://badge.fury.io/js/react-native)
+# Habit Builder - Front End [![Build Status](https://travis-ci.org/sanjaynelson/habitual.svg?branch=master)](https://travis-ci.org/sanjaynelson/habitual) [![npm version](https://badge.fury.io/js/react-native.svg)](https://badge.fury.io/js/react-native) [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
 
 ## Installation
 To get started, your local machine will need to have [Node](http://wikipedia.org) and [Node Package Manager](https://www.npmjs.com/) (npm) installed. While npm does have the capability to handle module version control, this application is best installed using Facebook's yarn.
@@ -9,11 +9,7 @@ If you do not have either node or yarn installed, follow these installations ste
 
 ```brew install yarn```
 
-If you have either program, please ensure that the latest updates are installed:
-
-```brew upgrade node```
-
-```brew upgrade yarn```
+If you have either program, please ensure that the latest updates are installed, please ensure that you have the latest upgrades by replacing the word ```install``` for ```upgrade``` in the example above.
 
 After these initial installations, clone the repository in your console using git:
 
@@ -39,11 +35,6 @@ After everything is installed, run the application by entering the following com
 ```react-native run-ios```
 
 The first execution of this function will take approximately 5-6 minutes.  It is important to let the full process take place.  If the emulator pops up, **please do not open the program**.  XCode will automatically open the app when all modules and files have been cached to the emulator.
-
-If there are errors with loading, in the root directory, reload npm by typing the following:
-
-```npm install```
-
 
 *This application has been developed for Mac and iOS only.  Functionality on Android and Window/Linux-based systems is not guaranteed.*
 

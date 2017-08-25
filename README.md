@@ -9,11 +9,7 @@ If you do not have either node or yarn installed, follow these installations ste
 
 ```brew install yarn```
 
-If you have either program, please ensure that the latest updates are installed:
-
-```brew upgrade node```
-
-```brew upgrade yarn```
+If you have either program, please ensure that the latest updates are installed, please ensure that you have the latest upgrades by replacing the word ```install``` for ```upgrade``` in the example above.
 
 After these initial installations, clone the repository in your console using git:
 

@@ -36,11 +36,6 @@ After everything is installed, run the application by entering the following com
 
 The first execution of this function will take approximately 5-6 minutes.  It is important to let the full process take place.  If the emulator pops up, **please do not open the program**.  XCode will automatically open the app when all modules and files have been cached to the emulator.
 
-If there are errors with loading, in the root directory, reload npm by typing the following:
-
-```npm install```
-
-
 *This application has been developed for Mac and iOS only.  Functionality on Android and Window/Linux-based systems is not guaranteed.*
 
 ## History

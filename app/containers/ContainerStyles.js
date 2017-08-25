@@ -25,8 +25,10 @@ export const NewHabit = StyleSheet.create({
   },
   inputBox: {
     marginTop: 20,
-    flex: .08,
+    // flex: .08,
     height: 25,
+    // marginTop: 10,
+    flex: .2,
     width: 240,
     fontWeight: '600',
     textAlign: 'center',
@@ -34,7 +36,7 @@ export const NewHabit = StyleSheet.create({
     backgroundColor: 'white',
     borderWidth: 2,
     padding: 10,
-    // borderRadius: 10
+    // borderRadius: 10,
   },
   button: {
     marginTop: 20,

@@ -1,4 +1,4 @@
-# Habit Builder - Front End [![Build Status](https://travis-ci.org/sanjaynelson/habitual.svg?branch=master)](https://travis-ci.org/sanjaynelson/habitual) [![npm version](https://badge.fury.io/js/react-native.svg)](https://badge.fury.io/js/react-native)
+# Habit Builder - Front End [![Build Status](https://travis-ci.org/sanjaynelson/habitual.svg?branch=master)](https://travis-ci.org/sanjaynelson/habitual) [![npm version](https://badge.fury.io/js/react-native.svg)](https://badge.fury.io/js/react-native) [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
 
 ## Installation
 To get started, your local machine will need to have [Node](http://wikipedia.org) and [Node Package Manager](https://www.npmjs.com/) (npm) installed. While npm does have the capability to handle module version control, this application is best installed using Facebook's yarn.

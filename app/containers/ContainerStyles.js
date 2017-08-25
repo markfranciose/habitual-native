@@ -57,7 +57,7 @@ export const NewHabit = StyleSheet.create({
   },
   buttonText: {
     textAlign: 'center',
-    padding: 10,
+    padding: 20,
     fontSize: 14,
     fontWeight: '600',
     color: 'white'
@@ -164,6 +164,7 @@ export const Home =
       fontWeight: '600'
     },
     flatList: {
+      paddingTop: 10,
       backgroundColor: '#2A5F6D',
       paddingBottom: 200
     },
@@ -279,6 +280,7 @@ export const ButtonStyles = StyleSheet.create({
     backgroundColor: 'white',
     width: 200,
     height: 50,
+    padding: 15,
     alignItems: 'center',
     justifyContent: 'center',
     shadowColor: 'black',

@@ -1,7 +1,9 @@
 # Habit Builder - Front End [![Build Status](https://travis-ci.org/sanjaynelson/habitual.svg?branch=master)](https://travis-ci.org/sanjaynelson/habitual) [![npm version](https://badge.fury.io/js/react-native.svg)](https://badge.fury.io/js/react-native) [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
 
 ## Installation
-To get started, your local machine will need to have [Node](http://wikipedia.org) and [Node Package Manager](https://www.npmjs.com/) (npm) installed. While npm does have the capability to handle module version control, this application is best installed using Facebook's yarn.
+
+### Mac:
+To get started, your local machine will need to have [Node](https://nodejs.org/en/download/) installed. While Node's npm does have the capability to handle dependencies, [Yarn](https://yarnpkg.com/lang/en/docs/install/) has proved a simpler option.
 
 If you do not have either node or yarn installed, follow these installations steps:
 
@@ -11,30 +13,19 @@ If you do not have either node or yarn installed, follow these installations ste
 
 If you have either program, please ensure that the latest updates are installed, please ensure that you have the latest upgrades by replacing the word ```install``` for ```upgrade``` in the example above.
 
-After these initial installations, clone the repository in your console using git:
-
+After these initial installations, clone the repository:
 ```git clone https://github.com/markfranciose/habitual-front```
 
-If your computer has been recently restored via an installation image or factory reset, **you must open XCode at least once with a new project of any kind in order to initialize the program**
-
-After XCode intialization, navigate to the root directory:
-
+navigate to the cloned directory: 
 ```cd habitual-front```
 
-Install react native to the file locally:
-
-```npm install react-native-cli```
-
-or globally
-```npm install -g react-native-cli```
-
-Install yarn for the best dependency management:
+Use yarn to install the dependencies:
 ```yarn install```
 
 After everything is installed, run the application by entering the following command:
 ```react-native run-ios```
 
-The first execution of this function will take approximately 5-6 minutes.  It is important to let the full process take place.  If the emulator pops up, **please do not open the program**.  XCode will automatically open the app when all modules and files have been cached to the emulator.
+The first time it runs, expect the proccess to take 3-6 minutes.  It is important to let the full process take place.  If the emulator pops up, **please do not open the program**.  XCode's simulator will automatically open the app when everything has been compiled.
 
 *This application has been developed for Mac and iOS only.  Functionality on Android and Window/Linux-based systems is not guaranteed.*
 
